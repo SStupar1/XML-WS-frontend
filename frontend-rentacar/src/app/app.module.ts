@@ -8,6 +8,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { NavbarComponent } from './pages/xml/navbar/navbar.component';
 import { RegistrationComponent } from './pages/auth/registration/registration.component';
+import { AlertModule } from './_alert';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   //declaration of components that belongs to this module
@@ -21,7 +24,10 @@ import { RegistrationComponent } from './pages/auth/registration/registration.co
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    AlertModule,
+    HttpClientModule,
+    FormsModule
   ],
   //for services
   providers: [],

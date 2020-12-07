@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
   {path: 'navbar', component: NavbarComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'login/:id', component: LoginComponent },
   {path: 'registration', component: RegistrationComponent}
 ];
 
