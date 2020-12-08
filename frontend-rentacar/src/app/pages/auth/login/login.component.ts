@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   constructor(private route: ActivatedRoute, private message: AlertService, private rrService: RegistrationRequestService, private router: Router, private authService: AuthService) { }
  
   model: any = {}
- 
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
       this.rrService.confirmRegistrationRequest(body).subscribe(() => {
         //this.message.success('Uspešno ste se registrovali!');
         alert('Uspešno ste se registrovali!');
-        this.router.navigateByUrl(`auth/login`);
+        this.router.navigateByUrl(`login`);
       },
       error => {
         this.message.info(error.error.message);
@@ -37,8 +36,9 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.authService.login(this.model).subscribe(data => {
-      const user = data.userResponse;
+      const user = data;
       localStorage.setItem('user', JSON.stringify(user));
+      this.router.navigateByUrl(`dashboard`);
     }, error => {
       this.message.info(error.error.message);
     })

@@ -11,6 +11,10 @@ import { RegistrationComponent } from './pages/auth/registration/registration.co
 import { AlertModule } from './_alert';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './pages/xml/dashboard/dashboard.component';
+import { AdminComponent } from './pages/xml/profiles/admin/admin.component';
+import { SimpleUserComponent } from './pages/xml/profiles/simple-user/simple-user.component';
+import { AgentComponent } from './pages/xml/profiles/agent/agent.component';
 
 @NgModule({
   //declaration of components that belongs to this module
@@ -18,7 +22,11 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DashboardComponent,
+    AdminComponent,
+    SimpleUserComponent,
+    AgentComponent
   ],
   imports: [
     BrowserModule,
