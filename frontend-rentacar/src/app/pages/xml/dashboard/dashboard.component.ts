@@ -56,5 +56,16 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('navbar');
   }
   
+  public adminProfile(): void {
+    this.router.navigateByUrl(`dashboard/profiles/admin/${this.user.id}`);
+  }
+
+  public agentProfile(): void {
+    this.router.navigateByUrl(`dashboard/profiles/agent/${this.user.id}`);
+  }
+
+  public simpleUserProfile(): void {
+    this.router.navigateByUrl(`dashboard/profiles/simple-user/${this.user.id}`);
+  }
 
 }

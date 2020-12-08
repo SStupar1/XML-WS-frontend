@@ -37,7 +37,7 @@
   }
   
   /* Set a style for the submit/register button */
-  .btnRegister {
+  .btnChange {
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
@@ -48,7 +48,7 @@
     opacity: 0.9;
   }
   
-  .btnRegister:hover {
+  .btnChange:hover {
     opacity:1;
   }
   

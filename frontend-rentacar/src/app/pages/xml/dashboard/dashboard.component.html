@@ -3,7 +3,7 @@
   <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading" >Therichpost </div>
     <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+      <a *ngIf="isAdmin" routerLink="/dashboard/lists/registration-requests" class="list-group-item list-group-item-action bg-light">Registration request</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
@@ -22,7 +22,9 @@
       <div class="collapse navbar-collapse " id="navbarSupportedContent" >
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
           <li class="nav-item active">
-            <a class="nav-link" href="/profiles/admin">Change your profile <span class="sr-only">(current)</span></a>
+            <a *ngIf="isAdmin" class="nav-link" (click)="adminProfile()">Change your profile <span class="sr-only">(current)</span></a>
+            <a *ngIf="isAgent" class="nav-link" (click)="agentProfile()">Change your profile <span class="sr-only">(current)</span></a>
+            <a *ngIf="isSimpleUser" class="nav-link" (click)="simpleUserProfile()">Change your profile <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="clearStorage()" >Logout</a>
@@ -31,9 +33,7 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <h1 class="mt-4">Simple Sidebar</h1>
-      <p>Ads</p>
-      <p>Blablabla</p>
+      <router-outlet></router-outlet>
     </div>
   </div>
   <!-- /#page-content-wrapper -->

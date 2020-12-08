@@ -7,6 +7,7 @@ import { DashboardComponent } from './pages/xml/dashboard/dashboard.component';
 import { AdminComponent } from './pages/xml/profiles/admin/admin.component';
 import { SimpleUserComponent } from './pages/xml/profiles/simple-user/simple-user.component';
 import { AgentComponent } from './pages/xml/profiles/agent/agent.component';
+import { RegistrationRequestsComponent } from './pages/xml/lists/registration-requests/registration-requests.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -14,10 +15,13 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'login/:id', component: LoginComponent },
   {path: 'registration', component: RegistrationComponent},
-  {path: 'dashboard', component:DashboardComponent},
-  {path: 'profiles/admin', component:AdminComponent},
-  {path: 'profiles/simple-user', component:SimpleUserComponent},
-  {path: 'profiles/agent', component:AgentComponent}
+  {path: 'dashboard', component:DashboardComponent, children: [
+      {path: 'profiles/admin/:id', component:AdminComponent},
+      {path: 'profiles/simple-user/:id', component:SimpleUserComponent},
+      {path: 'profiles/agent/:id', component:AgentComponent},
+      {path: 'lists/registration-requests', component:RegistrationRequestsComponent}
+    ]
+  }
 ];
 
 @NgModule({

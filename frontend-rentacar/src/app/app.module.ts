@@ -15,6 +15,7 @@ import { DashboardComponent } from './pages/xml/dashboard/dashboard.component';
 import { AdminComponent } from './pages/xml/profiles/admin/admin.component';
 import { SimpleUserComponent } from './pages/xml/profiles/simple-user/simple-user.component';
 import { AgentComponent } from './pages/xml/profiles/agent/agent.component';
+import { RegistrationRequestsComponent } from './pages/xml/lists/registration-requests/registration-requests.component';
 
 @NgModule({
   //declaration of components that belongs to this module
@@ -26,7 +27,8 @@ import { AgentComponent } from './pages/xml/profiles/agent/agent.component';
     DashboardComponent,
     AdminComponent,
     SimpleUserComponent,
-    AgentComponent
+    AgentComponent,
+    RegistrationRequestsComponent
   ],
   imports: [
     BrowserModule,
