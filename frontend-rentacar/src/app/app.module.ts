@@ -16,6 +16,15 @@ import { AdminComponent } from './pages/xml/profiles/admin/admin.component';
 import { SimpleUserComponent } from './pages/xml/profiles/simple-user/simple-user.component';
 import { AgentComponent } from './pages/xml/profiles/agent/agent.component';
 import { RegistrationRequestsComponent } from './pages/xml/lists/registration-requests/registration-requests.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+//imports of ng-zorro components
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+registerLocaleData(en);
 
 @NgModule({
   //declaration of components that belongs to this module
@@ -37,10 +46,12 @@ import { RegistrationRequestsComponent } from './pages/xml/lists/registration-re
     MatSliderModule,
     AlertModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NzLayoutModule,
+    NzButtonModule
   ],
   //for services
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   //starting component for our app
   bootstrap: [AppComponent]
 })

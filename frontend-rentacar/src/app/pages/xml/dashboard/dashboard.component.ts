@@ -37,7 +37,6 @@ export class DashboardComponent implements OnInit {
     this.isAdmin = false;
     this.isAgent = false;
     this.isSimpleUser = false;
-    console.log(this.user.userRole);
     if(this.user.userRole === 'ADMIN'){
       this.isAdmin = true;
     }else if(this.user.userRole === 'AGENT'){
@@ -45,10 +44,6 @@ export class DashboardComponent implements OnInit {
     }else if(this.user.userRole === 'SIMPLE_USER'){
       this.isSimpleUser = true;
     }
-    console.log(this.user);
-    console.log(this.isAdmin);
-    console.log(this.isAgent);
-    console.log(this.isSimpleUser);
   }
 
   public clearStorage(): void {
