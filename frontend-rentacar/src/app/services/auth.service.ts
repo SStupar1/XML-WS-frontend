@@ -18,6 +18,10 @@ export class AuthService {
   public registerSimpleUser(body): Observable<any> {
     return this.http.post(`${this.baseUrl}/auth-service/auth/register-simple-user`, body);
   }
+
+  public getToken(){
+    return JSON.parse(localStorage.getItem('token'));
+  }
 }
 
 

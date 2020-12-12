@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl(`login`);
       },
       error => {
-        this.message.info(error.error.message);
+        alert("Error login");
+        //this.message.info(error.error.message);
       });
     }
   }
@@ -38,9 +39,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.model).subscribe(data => {
       const user = data;
       localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', JSON.stringify(user.token));
+
       this.router.navigateByUrl(`dashboard`);
     }, error => {
-      this.message.info(error.error.message);
+      //this.message.info(error.error.message);
+      alert("Error login");
     })
 
   

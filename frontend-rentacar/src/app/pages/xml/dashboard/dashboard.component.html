@@ -45,7 +45,7 @@
       <li nz-menu-item *ngIf="isAdmin" (click)="adminProfile()">Change your profile </li>
       <li nz-menu-item *ngIf="isAgent" (click)="agentProfile()">Change your profile </li>
       <li nz-menu-item *ngIf="isSimpleUser" (click)="simpleUserProfile()">Change your profile </li>
-      <li nz-menu-item (click)="clearStorage()" >Logout</li>
+      <li nz-menu-item (click)="clearStorage()">Logout</li>
     </ul>
   </nz-header>
   <nz-layout>
@@ -72,7 +72,12 @@
     </nz-sider>
     <nz-layout class="inner-layout">
       
-      <nz-content>Content</nz-content>
+      <nz-content>
+        CONTENT
+        <router-outlet></router-outlet>
+      </nz-content>
+      
+
     </nz-layout>
   </nz-layout>
 </nz-layout>
