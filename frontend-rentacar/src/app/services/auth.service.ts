@@ -19,6 +19,10 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/auth-service/auth/register-simple-user`, body);
   }
 
+  public registerAgent(body): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth-service/auth/register-agent`, body);
+  }
+
   public getToken(){
     return JSON.parse(localStorage.getItem('token'));
   }

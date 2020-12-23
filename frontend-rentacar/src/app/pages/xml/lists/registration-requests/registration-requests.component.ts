@@ -10,27 +10,12 @@ export class RegistrationRequestsComponent implements OnInit {
 
   public pendingUsers = [];
 
-  
-  headers = ["Username", "Firstname", "Lastname", "SSN", "Address"];
-
   constructor(private rrService: RegistrationRequestService) { }
   
 
   ngOnInit(): void {
     this.getAllPendingUsers();
   }
-
- /* private getAllPendingUsers(): void {
-    this.rrService.getAllPendingUsers().subscribe(data => {
-      this.pendingUsers = data;
-      alert("success");
-      console.log("list of pending users" + this.pendingUsers);
-    },
-    error => {
-     alert("error");
-    });
-   
-  }*/
 
   private getAllPendingUsers(): void {
     this.rrService.getAllPendingUsers().subscribe(data => {
@@ -40,4 +25,23 @@ export class RegistrationRequestsComponent implements OnInit {
     })
   }
 
+  public approve(id): void {
+    const body = {
+      id: id
+    }
+    this.rrService.approveRegistrationRequest(body).subscribe(data =>{
+      this.getAllPendingUsers();
+      alert("Uspesno apruvovan");
+    })
+  }
+
+  public deny(id): void {
+    const body = {
+      id: id
+    }
+    this.rrService.denyRegistrationRequest(body).subscribe(data =>{
+      this.getAllPendingUsers();
+      alert("Denajovan");
+    })
+  }
 }

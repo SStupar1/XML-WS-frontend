@@ -1,0 +1,21 @@
+<nz-table #basicTable [nzData]="carBrands">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carBrand of carBrands">
+        <td>{{ carBrand.name }}</td>
+        <td>{{ carBrand.country }}</td>
+        <td>
+          <a (click)="update(carBrand.id)">Update</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(carBrand.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <button nz-button nzType="primary" routerLink="/dashboard/new-items/add-car-brand">Create new car brand</button>

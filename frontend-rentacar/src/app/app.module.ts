@@ -12,13 +12,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 //Components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/xml/dashboard/dashboard.component';
-import { AdminComponent } from './pages/xml/profiles/admin/admin.component';
-import { SimpleUserComponent } from './pages/xml/profiles/simple-user/simple-user.component';
-import { AgentComponent } from './pages/xml/profiles/agent/agent.component';
+import { AdminComponent } from './pages/xml/updates/admin/admin.component';
+import { SimpleUserComponent } from './pages/xml/updates/simple-user/simple-user.component';
+import { AgentComponent } from './pages/xml/updates/agent/agent.component';
 import { RegistrationRequestsComponent } from './pages/xml/lists/registration-requests/registration-requests.component';
-import { RegistrationComponent } from './pages/auth/registration/registration.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { NavbarComponent } from './pages/xml/navbar/navbar.component';
+import { RegisterSimpleUserComponent } from './pages/auth/registration/register-simple-user/register-simple-user.component';
+import { RegisterAgentComponent } from './pages/auth/registration/register-agent/register-agent.component';
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
@@ -30,6 +31,17 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 //import of ng-zorro components
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
+import {DatePipe} from '@angular/common';
+import { FuelTypesComponent } from './pages/xml/lists/fuel-types/fuel-types.component';
+import { GearshiftTypesComponent } from './pages/xml/lists/gearshift-types/gearshift-types.component';
+import { CarBrandsComponent } from './pages/xml/lists/car-brands/car-brands.component';
+import { CarModelsComponent } from './pages/xml/lists/car-models/car-models.component';
+import { CarClassesComponent } from './pages/xml/lists/car-classes/car-classes.component';
+import { AddCarBrandComponent } from './pages/xml/new-items/add-car-brand/add-car-brand.component';
+import { AddCarClassComponent } from './pages/xml/new-items/add-car-class/add-car-class.component';
+import { AddCarModelComponent } from './pages/xml/new-items/add-car-model/add-car-model.component';
+import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fuel-type.component';
+import { AddGearshiftTypeComponent } from './pages/xml/new-items/add-gearshift-type/add-gearshift-type.component';
 
 
 registerLocaleData(en);
@@ -45,12 +57,23 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    RegistrationComponent,
+    RegisterSimpleUserComponent,
     DashboardComponent,
     AdminComponent,
     SimpleUserComponent,
     AgentComponent,
-    RegistrationRequestsComponent
+    RegistrationRequestsComponent,
+    FuelTypesComponent,
+    RegisterAgentComponent,
+    GearshiftTypesComponent,
+    CarBrandsComponent,
+    CarModelsComponent,
+    CarClassesComponent,
+    AddCarBrandComponent,
+    AddCarClassComponent,
+    AddCarModelComponent,
+    AddFuelTypeComponent,
+    AddGearshiftTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +98,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
                 provide: HTTP_INTERCEPTORS,
                 useClass: TokenInterceptorService,
                 multi: true
-              }],
+              }, DatePipe],
   //starting component for our app
   bootstrap: [AppComponent]
 })

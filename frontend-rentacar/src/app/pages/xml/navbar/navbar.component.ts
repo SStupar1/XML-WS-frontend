@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onButtonClickRegistration():void{
-    this.router.navigate(['registration']);
+    this.router.navigate(['register-simple-user']);
   }
 
   onButtonClickLogin():void{

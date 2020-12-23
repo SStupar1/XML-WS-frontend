@@ -46,11 +46,6 @@ export class LoginComponent implements OnInit {
       //this.message.info(error.error.message);
       alert("Error login");
     })
-
-  
-    
-    
-
   }
 
 }

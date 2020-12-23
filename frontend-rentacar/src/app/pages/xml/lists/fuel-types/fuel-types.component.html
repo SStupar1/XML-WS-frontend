@@ -1,0 +1,21 @@
+<nz-table #basicTable [nzData]="fuelTypes">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Tank capacity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fuelType of fuelTypes">
+        <td>{{ fuelType.type }}</td>
+        <td>{{ fuelType.tankCapacity }}</td>
+        <td>
+          <a (click)="update(fuelType.id)">Update</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(fuelType.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <button nz-button nzType="primary" routerLink="/dashboard/new-items/add-fuel-type">Create new fuel type</button>

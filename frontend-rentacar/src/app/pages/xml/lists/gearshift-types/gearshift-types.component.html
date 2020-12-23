@@ -1,0 +1,21 @@
+<nz-table #basicTable [nzData]="gearshiftTypes">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Number of gears</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let gearshiftType of gearshiftTypes">
+        <td>{{ gearshiftType.type }}</td>
+        <td>{{ gearshiftType.numberOfGears }}</td>
+        <td>
+          <a (click)="update(gearshiftType.id)">Update</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(gearshiftType.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <button nz-button nzType="primary" routerLink="/dashboard/new-items/add-gearshift-type">Create new gearshift type</button>

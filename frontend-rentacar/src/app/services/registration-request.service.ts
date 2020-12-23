@@ -19,5 +19,13 @@ export class RegistrationRequestService {
   public getAllPendingUsers(): Observable<any> {
     return this.http.get(`${this.baseUrl}/auth-service/simple-users/registration-requests`);
   }
+
+  public approveRegistrationRequest(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/auth-service/simple-users/approve`, body);
+  }
+
+  public denyRegistrationRequest(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/auth-service/simple-users/deny`, body);
+  }
   
 }

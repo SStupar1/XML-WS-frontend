@@ -1,15 +1,26 @@
-<table class="table">
+<nz-table #basicTable [nzData]="pendingUsers">
+  <thead>
     <tr>
-      <th *ngFor = "let column of headers">
-        {{column}}
-      </th>
-    </tr> 
-      <tr *ngFor = "let pendingUser of pendingUsers"> {{pendingUser.username}} </tr>
-      <tr *ngFor = "let pendingUser of pendingUsers"> {{pendingUser.firstName}} </tr>
-      <tr *ngFor = "let pendingUser of pendingUsers"> {{pendingUser.lastName}} </tr>
-      <tr *ngFor = "let pendingUser of pendingUsers"> {{pendingUser.ssn}} </tr>
-      <tr *ngFor = "let pendingUser of pendingUsers"> {{pendingUser.address}} </tr>
-
-      <button nz-button nzType="primary">Primary Button</button>
-    
-</table>
+      <th>Username</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>SSN</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pendingUser of pendingUsers">
+      <td>{{ pendingUser.username }}</td>
+      <td>{{ pendingUser.firstName }}</td>
+      <td>{{ pendingUser.lastName }}</td>
+      <td>{{ pendingUser.ssn }}</td>
+      <td>{{ pendingUser.address }}</td>
+      <td>
+        <a (click)="approve(pendingUser.id)">Approve</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="deny(pendingUser.id)">Deny</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
