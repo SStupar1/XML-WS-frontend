@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import { AlertModule } from './_alert';
 import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -20,6 +19,14 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { NavbarComponent } from './pages/xml/navbar/navbar.component';
 import { RegisterSimpleUserComponent } from './pages/auth/registration/register-simple-user/register-simple-user.component';
 import { RegisterAgentComponent } from './pages/auth/registration/register-agent/register-agent.component';
+import { UpdateCarBrandComponent } from './pages/xml/updates/update-car-brand/update-car-brand.component';
+import { UpdateCarClassComponent } from './pages/xml/updates/update-car-class/update-car-class.component';
+import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
+import { UpdateFuelTypeComponent } from './pages/xml/updates/update-fuel-type/update-fuel-type.component';
+import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshift-type/update-gearshift-type.component';
+
+
+
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
@@ -73,7 +80,12 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     AddCarClassComponent,
     AddCarModelComponent,
     AddFuelTypeComponent,
-    AddGearshiftTypeComponent
+    AddGearshiftTypeComponent,
+    UpdateCarBrandComponent,
+    UpdateCarClassComponent,
+    UpdateCarModelComponent,
+    UpdateFuelTypeComponent,
+    UpdateGearshiftTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +99,6 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     DragDropModule,
 
     MatSliderModule,
-    AlertModule,
     
     DemoNgZorroAntdModule
   ],

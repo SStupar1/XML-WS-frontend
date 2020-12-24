@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FuelTypeService } from 'src/app/services/fuel-type.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fuel-types',
@@ -10,7 +11,7 @@ export class FuelTypesComponent implements OnInit {
 
   public fuelTypes = [];
 
-  constructor(private ftService: FuelTypeService) { }
+  constructor(private ftService: FuelTypeService, private router: Router) { }
   
 
   ngOnInit(): void {
@@ -26,18 +27,15 @@ export class FuelTypesComponent implements OnInit {
   }
 
   public update(id): void {
-  
+    this.router.navigateByUrl(`dashboard/updates/update-fuel-type/${id}`);
     
   }
 
   public delete(id): void {
-   /* const body = {
-      id: id
-    }
-    this.gtService.deleteById(body).subscribe(data =>{
-      this.getAllGearshiftTypes();
-      alert("Obrisan");
-    })*/
+    this.ftService.deleteFuelType(id).subscribe(data =>{
+      this.getAllFuelTypes();
+      alert(data.text);
+    })
   }
 
 }

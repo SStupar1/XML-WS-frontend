@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarModelService } from 'src/app/services/car-model.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class CarModelsComponent implements OnInit {
 
   public carModels = [];
 
-  constructor(private cmService: CarModelService) { }
+  constructor(private cmService: CarModelService, private router: Router) { }
   
 
   ngOnInit(): void {
@@ -26,18 +27,14 @@ export class CarModelsComponent implements OnInit {
   }
 
   public update(id): void {
-  
-    
+    this.router.navigateByUrl(`dashboard/updates/update-car-model/${id}`);
   }
 
   public delete(id): void {
-   /* const body = {
-      id: id
-    }
-    this.gtService.deleteById(body).subscribe(data =>{
-      this.getAllGearshiftTypes();
-      alert("Obrisan");
-    })*/
+    this.cmService.deleteCarModel(id).subscribe(data =>{
+      this.getAllCarModels();
+      alert(data.text);
+    })
   }
 
 }

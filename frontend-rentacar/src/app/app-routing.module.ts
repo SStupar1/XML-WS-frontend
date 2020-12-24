@@ -19,6 +19,11 @@ import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fu
 import { AddCarClassComponent } from './pages/xml/new-items/add-car-class/add-car-class.component';
 import { AddCarModelComponent } from './pages/xml/new-items/add-car-model/add-car-model.component';
 import { AddCarBrandComponent } from './pages/xml/new-items/add-car-brand/add-car-brand.component';
+import { UpdateCarBrandComponent } from './pages/xml/updates/update-car-brand/update-car-brand.component';
+import { UpdateCarClassComponent } from './pages/xml/updates/update-car-class/update-car-class.component';
+import { UpdateFuelTypeComponent } from './pages/xml/updates/update-fuel-type/update-fuel-type.component';
+import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshift-type/update-gearshift-type.component';
+import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
 
 
 const routes: Routes = [
@@ -42,7 +47,11 @@ const routes: Routes = [
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 
       {path: 'new-items/add-car-model', component:AddCarModelComponent}, 
       {path: 'new-items/add-car-brand', component:AddCarBrandComponent},
-
+      {path: 'updates/update-car-brand/:id', component:UpdateCarBrandComponent},
+      {path: 'updates/update-car-class/:id', component:UpdateCarClassComponent},
+      {path: 'updates/update-fuel-type/:id', component:UpdateFuelTypeComponent},
+      {path: 'updates/update-gearshift-type/:id', component:UpdateGearshiftTypeComponent},
+      {path: 'updates/update-car-model/:id', component:UpdateCarModelComponent},
 
       {path: 'auth/register-agent', component:RegisterAgentComponent},
       

@@ -1,1 +1,22 @@
-<p>update-car-brand works!</p>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <!--NAME-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="name" formControlName="name"/>
+      </nz-form-control>
+    </nz-form-item>
+    <!--COUNTRY-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="country" >Country</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="country" formControlName="country"/>
+        </nz-form-control>
+    </nz-form-item>
+    <!--Update-->
+    <nz-form-item nz-row class="create-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Update</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

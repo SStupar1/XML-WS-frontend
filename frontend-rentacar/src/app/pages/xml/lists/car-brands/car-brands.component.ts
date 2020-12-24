@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarBrandService } from 'src/app/services/car-brand.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class CarBrandsComponent implements OnInit {
 
   public carBrands = [];
 
-  constructor(private cbService: CarBrandService) { }
+  constructor(private cbService: CarBrandService, private router: Router) { }
   
 
   ngOnInit(): void {
@@ -26,18 +27,15 @@ export class CarBrandsComponent implements OnInit {
   }
 
   public update(id): void {
-  
-    
+    console.log("id iz CarBrandComponent saljem..." + id);
+    this.router.navigateByUrl(`dashboard/updates/update-car-brand/${id}`);
   }
 
   public delete(id): void {
-   /* const body = {
-      id: id
-    }
-    this.gtService.deleteById(body).subscribe(data =>{
-      this.getAllGearshiftTypes();
-      alert("Obrisan");
-    })*/
+    this.cbService.deleteCarBrand(id).subscribe(data =>{
+      this.getAllCarBrands();
+      alert(data.text);
+    })
   }
 
 

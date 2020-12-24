@@ -19,4 +19,16 @@ export class CarModelService {
   public createCarModel(body): Observable<any> {
     return this.http.post(`${this.baseUrl}/ad-service/car-models`, body);
   }
+
+  public getCarModel(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}/ad-service/car-models/${id}`);
+  }
+
+  public updateCarModel(id, body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/ad-service/car-models/${id}`, body);
+  }
+
+  public deleteCarModel(id): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/ad-service/car-models/${id}`);
+  }
 }

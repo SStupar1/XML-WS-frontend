@@ -33,7 +33,7 @@ export class RegisterAgentComponent implements OnInit {
     console.log(body);
     this.authService.registerAgent(this.validateForm.value).subscribe(data => {
       alert('Uspesno ste registrovali agenta!');
-      //this.router.navigateByUrl(`dashboard`);
+      this.router.navigateByUrl(`dashboard`);
   }, error => {
     alert('Error');
   })

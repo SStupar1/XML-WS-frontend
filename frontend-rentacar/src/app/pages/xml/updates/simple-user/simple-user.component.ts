@@ -13,7 +13,7 @@ export class SimpleUserComponent implements OnInit {
   private id: string;
   model: any = {}
 
-  constructor(private route: ActivatedRoute ,private simpleUserService: SimpleUserService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private simpleUserService: SimpleUserService, private router: Router) { }
 
   ngOnInit(): void {
     this.extractId();

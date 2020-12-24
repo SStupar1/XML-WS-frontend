@@ -20,4 +20,16 @@ export class CarBrandService {
     return this.http.post(`${this.baseUrl}/ad-service/car-brands`, body);
   }
 
+  public getCarBrand(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}/ad-service/car-brands/${id}`);
+  }
+
+  public updateCarBrand(id, body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/ad-service/car-brands/${id}`, body);
+  }
+
+  public deleteCarBrand(id): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/ad-service/car-brands/${id}`);
+  }
+
 }

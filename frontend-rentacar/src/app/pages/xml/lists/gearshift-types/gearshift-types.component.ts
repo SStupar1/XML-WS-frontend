@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GearshiftTypeService } from 'src/app/services/gearshift-type.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gearshift-types',
@@ -10,7 +11,7 @@ export class GearshiftTypesComponent implements OnInit {
 
   public gearshiftTypes = [];
 
-  constructor(private gtService: GearshiftTypeService) { }
+  constructor(private gtService: GearshiftTypeService, private router: Router) { }
   
 
   ngOnInit(): void {
@@ -26,18 +27,15 @@ export class GearshiftTypesComponent implements OnInit {
   }
 
   public update(id): void {
-  
+    this.router.navigateByUrl(`dashboard/updates/update-gearshift-type/${id}`);
     
   }
 
   public delete(id): void {
-   /* const body = {
-      id: id
-    }
-    this.gtService.deleteById(body).subscribe(data =>{
+    this.gtService.deleteGearshiftType(id).subscribe(data =>{
       this.getAllGearshiftTypes();
-      alert("Obrisan");
-    })*/
+      alert(data.text);
+    })
   }
 
 }

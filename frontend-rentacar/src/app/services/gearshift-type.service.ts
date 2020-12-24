@@ -20,4 +20,16 @@ export class GearshiftTypeService {
     return this.http.post(`${this.baseUrl}/ad-service/gearshift-types`, body);
   }
 
+  public getGearshiftType(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}/ad-service/gearshift-types/${id}`);
+  }
+
+  public updateGearshiftType(id, body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/ad-service/gearshift-types/${id}`, body);
+  }
+
+  public deleteGearshiftType(id): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/ad-service/gearshift-types/${id}`);
+  }
+
 }

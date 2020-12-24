@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,12 +18,6 @@ export class DashboardComponent implements OnInit {
  
 
    ngOnInit() {
-    /*
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-    */
     this.setupUser();
     this.setupUserType();
   }
