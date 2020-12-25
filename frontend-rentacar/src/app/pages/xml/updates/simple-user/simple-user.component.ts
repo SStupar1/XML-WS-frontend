@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SimpleUserService } from 'src/app/services/simple-user.service';
 
 @Component({
@@ -9,36 +10,46 @@ import { SimpleUserService } from 'src/app/services/simple-user.service';
 })
 export class SimpleUserComponent implements OnInit {
 
-  
-  private id: string;
-  model: any = {}
+  private id : any;
+  validateForm: FormGroup
 
-  constructor(private route: ActivatedRoute, private simpleUserService: SimpleUserService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private suService : SimpleUserService) { }
 
   ngOnInit(): void {
-    this.extractId();
-    this.simpleUserService.getSimpleUser(this.id).subscribe(data => {
-      this.model.firstName = data.firstName;
-      this.model.lastName = data.lastName;
-      this.model.address = data.address;
-      this.model.ssn = data.ssn;
-    },
-    error => {
-      alert(error);
-    });
-
+    this.setupForm();
+    this.getDetails();
   }
 
-  private extractId(): void {
+  public setupForm(): void {
+    this.validateForm = this.fb.group({
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      ssn: [null, [Validators.required]],
+      address: [null, [Validators.required]],
+    });
+  }
+
+  public getDetails(): void {
     this.id = this.route.snapshot.params.id;
+    this.suService.getSimpleUser(this.id).subscribe(data =>{
+      console.log(data);
+      const formValues = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        ssn: data.ssn,
+        address: data.address
+      }
+      this.validateForm.setValue(formValues);
+    })
   }
 
-  updateSimpleUser(): void {
-    this.simpleUserService.updateSimpleUser(this.id, this.model).subscribe(data => {
-        alert("Profile updated.")
+  submitForm(): void {
+    console.log(this.validateForm.value);
+    this.suService.updateSimpleUser(this.id, this.validateForm.value).subscribe(data => {
+      this.router.navigateByUrl(`dashboard`);
     }, error => {
-      alert("Error")
-    });
+      alert('Error');
+    })
   }
 
 }

@@ -44,9 +44,6 @@ export class UpdateCarBrandComponent implements OnInit {
     }, error => {
       alert('Error');
     })
-    
-   console.log(this.validateForm.value);
-    
   }
 
 }

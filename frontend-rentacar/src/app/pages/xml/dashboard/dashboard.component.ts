@@ -45,15 +45,15 @@ export class DashboardComponent implements OnInit {
   }
   
   public adminProfile(): void {
-    this.router.navigateByUrl(`dashboard/profiles/admin/${this.user.id}`);
+    this.router.navigateByUrl(`dashboard/updates/admin/${this.user.id}`);
   }
 
   public agentProfile(): void {
-    this.router.navigateByUrl(`dashboard/profiles/agent/${this.user.id}`);
+    this.router.navigateByUrl(`dashboard/updates/agent/${this.user.id}`);
   }
 
   public simpleUserProfile(): void {
-    this.router.navigateByUrl(`dashboard/profiles/simple-user/${this.user.id}`);
+    this.router.navigateByUrl(`dashboard/updates/simple-user/${this.user.id}`);
   }
 
 }

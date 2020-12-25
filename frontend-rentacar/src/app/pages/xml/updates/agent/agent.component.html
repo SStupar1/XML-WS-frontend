@@ -1,20 +1,37 @@
-<form #formUpdateAgent="ngForm" (ngSubmit)="updateAgent()">
-    <div class="container">
-      <h1>Your profile</h1>
-      <hr>
 
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter name" name="name" [(ngModel)]="model.name">
-
-      <label for="pib"><b>PIB</b></label>
-      <input type="text" placeholder="Enter PIB" name="pib" [(ngModel)]="model.pib">
-
-      <label for="bankAccountNumber"><b>Bank Account Number</b></label>
-      <input type="text" placeholder="Enter Bank Account Number" name="bankAccountNumber" [(ngModel)]="model.bankAccountNumber"> 
-
-      <label for="address"><b>Address</b></label>
-      <input type="text" placeholder="Enter address" name="address" [(ngModel)]="model.address">
-  
-      <button type="submit" class="btnChange">Save changes</button>
-    </div>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <!--NAME-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="name" formControlName="name"/>
+      </nz-form-control>
+    </nz-form-item>
+    <!--PIB-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pib">PIB</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="pib" formControlName="pib"/>
+      </nz-form-control>
+    </nz-form-item>
+    <!--BANK ACCOUNT NUMBER-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="bankAccountNumber" >Bank Account Number</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="bankAccountNumber" formControlName="bankAccountNumber"/>
+        </nz-form-control>
+    </nz-form-item>
+    <!--ADDRESS-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" >SSN</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="address" formControlName="address"/>
+      </nz-form-control>
+  </nz-form-item>
+    <!--Update-->
+    <nz-form-item nz-row class="create-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Update</button>
+      </nz-form-control>
+    </nz-form-item>
   </form>

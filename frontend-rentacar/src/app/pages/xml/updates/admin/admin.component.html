@@ -1,14 +1,22 @@
-<form #formUpdateAdmin="ngForm" (ngSubmit)="updateAdmin()">
-    <div class="container">
-      <h1>Your profile</h1>
-      <hr>
-
-      <label for="fName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First name" name="fName" [(ngModel)]="model.firstName">
-
-      <label for="lName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last name" name="lName" [(ngModel)]="model.lastName">
-  
-      <button type="submit" class="btnChange">Save changes</button>
-    </div>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <!--FIRST NAME-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="firstName">First name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="firstName" formControlName="firstName"/>
+      </nz-form-control>
+    </nz-form-item>
+    <!--LAST NAME-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lastName">Last name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="lastName" formControlName="lastName"/>
+      </nz-form-control>
+    </nz-form-item>
+    <!--Update-->
+    <nz-form-item nz-row class="create-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Update</button>
+      </nz-form-control>
+    </nz-form-item>
   </form>
