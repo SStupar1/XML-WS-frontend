@@ -24,7 +24,8 @@ import { UpdateCarClassComponent } from './pages/xml/updates/update-car-class/up
 import { UpdateFuelTypeComponent } from './pages/xml/updates/update-fuel-type/update-fuel-type.component';
 import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshift-type/update-gearshift-type.component';
 import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
-
+import {BlockedComponent} from './pages/xml/lists/blocked/blocked.component';
+import {ActivatedComponent} from './pages/xml/lists/activated/activated.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -41,7 +42,9 @@ const routes: Routes = [
       {path: 'lists/car-classes', component:CarClassesComponent}, 
       {path: 'lists/car-models', component:CarModelsComponent}, 
       {path: 'lists/car-brands', component:CarBrandsComponent}, 
-      {path: 'lists/gearshift-types', component:GearshiftTypesComponent}, 
+      {path: 'lists/gearshift-types', component:GearshiftTypesComponent},
+      {path: 'lists/blocked', component:BlockedComponent},
+      {path: 'lists/activated', component:ActivatedComponent},
       {path: 'new-items/add-gearshift-type', component:AddGearshiftTypeComponent}, 
       {path: 'new-items/add-fuel-type', component:AddFuelTypeComponent}, 
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 

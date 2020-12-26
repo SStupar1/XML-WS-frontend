@@ -19,4 +19,24 @@ export class SimpleUserService {
   public updateSimpleUser(id, body): Observable<any> {
     return this.http.put(`${this.baseUrl}/auth-service/simple-users/${id}`, body);
   }
+
+  public getAllSimpleUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/auth-service/simple-users`);
+  }
+
+  public getAllBlockedSimpleUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/auth-service/simple-users/blocked`);
+  }
+
+  public blockSimpleUser(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/auth-service/simple-users/block`, body);
+  }
+
+  public deleteSimpleUser(id): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/auth-service/simple-users/${id}`);
+  }
+
+  public activateSimpleUser(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/auth-service/simple-users/activate`, body);
+  }
 }

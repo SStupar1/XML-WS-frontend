@@ -49,6 +49,8 @@ import { AddCarClassComponent } from './pages/xml/new-items/add-car-class/add-ca
 import { AddCarModelComponent } from './pages/xml/new-items/add-car-model/add-car-model.component';
 import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fuel-type.component';
 import { AddGearshiftTypeComponent } from './pages/xml/new-items/add-gearshift-type/add-gearshift-type.component';
+import { ActivatedComponent } from './pages/xml/lists/activated/activated.component';
+import { BlockedComponent } from './pages/xml/lists/blocked/blocked.component';
 
 
 registerLocaleData(en);
@@ -85,7 +87,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     UpdateCarClassComponent,
     UpdateCarModelComponent,
     UpdateFuelTypeComponent,
-    UpdateGearshiftTypeComponent
+    UpdateGearshiftTypeComponent,
+    ActivatedComponent,
+    BlockedComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+<nz-table #basicTable [nzData]="activatedSimpleUsers">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>SSN</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let activatedSimpleUser of activatedSimpleUsers">
+        <td>{{ activatedSimpleUser.username }}</td>
+        <td>{{ activatedSimpleUser.firstName }}</td>
+        <td>{{ activatedSimpleUser.lastName }}</td>
+        <td>{{ activatedSimpleUser.ssn }}</td>
+        <td>{{ activatedSimpleUser.address }}</td>
+        <td>
+          <a (click)="block(activatedSimpleUser.id)">Block</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(activatedSimpleUser.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

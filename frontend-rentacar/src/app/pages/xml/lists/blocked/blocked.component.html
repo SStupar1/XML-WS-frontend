@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="blockedSimpleUsers">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>SSN</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let blockedSimpleUser of blockedSimpleUsers">
+        <td>{{ blockedSimpleUser.username }}</td>
+        <td>{{ blockedSimpleUser.firstName }}</td>
+        <td>{{ blockedSimpleUser.lastName }}</td>
+        <td>{{ blockedSimpleUser.ssn }}</td>
+        <td>{{ blockedSimpleUser.address }}</td>
+        <td>
+          <a (click)="activate(blockedSimpleUser.id)">Activate</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
