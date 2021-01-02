@@ -1,0 +1,37 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <!--LIMITED KILOMETERS-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="limitedKm">Limited kilometers</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="limitedKm" formControlName="limitedKm"/>
+      </nz-form-control>
+    </nz-form-item>
+     <!--CDW-->
+     <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cdw">CDW</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="cdw" formControlName="cdw"/>
+        </nz-form-control>
+      </nz-form-item>
+    <!--SEATS-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="seats">Seats</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="seats" formControlName="seats"/>
+        </nz-form-control>
+      </nz-form-item>
+    <!--Update-->
+    <nz-form-item nz-row class="create-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Update</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+
+
+
+
+
+
+

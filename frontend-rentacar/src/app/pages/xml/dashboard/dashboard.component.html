@@ -24,6 +24,7 @@
             <li nz-menu-item routerLink="/dashboard/lists/gearshift-types">Gearshift types </li>
           </ul>
         </li>
+        <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/ads">Advertisements</li>
         <li nz-submenu nzTitle="subnav 3" nzIcon="notification">
           <ul>
             <li nz-menu-item>option9</li>

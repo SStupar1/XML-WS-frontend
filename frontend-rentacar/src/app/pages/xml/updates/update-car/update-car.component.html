@@ -1,0 +1,34 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <!--FUEL-TYPE-->
+    <nz-form-item>
+        <a nz-dropdown [nzDropdownMenu]="menu"  >
+          Choose fuel type
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu *ngFor="let fuelType of fuelTypes" >
+            <li nz-menu-item value={{fuelType.id}} (click)="changeSelectFuelType($event)">{{ fuelType.type }} {{fuelType.tankCapacity}}</li>
+          </ul>
+        </nz-dropdown-menu>
+      </nz-form-item>
+      <!--GEARSHIFT-TYPE-->
+    <nz-form-item>
+      <a nz-dropdown [nzDropdownMenu]="menu"  >
+        Choose gearshiftd type
+        <i nz-icon nzType="down"></i>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu *ngFor="let gearshiftType of gearshiftTypes" >
+          <li nz-menu-item value={{gearshiftType.id}} (click)="changeSelectGearshiftType($event)">{{ gearshiftType.type }} {{ gearshiftType.numberOfGears }}</li>
+        </ul>
+      </nz-dropdown-menu>
+    </nz-form-item>
+    
+       <!--Update-->
+    <nz-form-item nz-row class="create-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button nzType="primary">Update</button>
+        </nz-form-control>
+      </nz-form-item>
+
+  </form>

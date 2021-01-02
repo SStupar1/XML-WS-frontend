@@ -21,10 +21,13 @@ import { RegisterSimpleUserComponent } from './pages/auth/registration/register-
 import { RegisterAgentComponent } from './pages/auth/registration/register-agent/register-agent.component';
 import { UpdateCarBrandComponent } from './pages/xml/updates/update-car-brand/update-car-brand.component';
 import { UpdateCarClassComponent } from './pages/xml/updates/update-car-class/update-car-class.component';
+import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.component';
 import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
 import { UpdateFuelTypeComponent } from './pages/xml/updates/update-fuel-type/update-fuel-type.component';
 import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshift-type/update-gearshift-type.component';
-
+import { AdsComponent } from './pages/xml/lists/ads/ads.component';
+import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
+import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
 
 
 //services
@@ -87,9 +90,13 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     UpdateCarClassComponent,
     UpdateCarModelComponent,
     UpdateFuelTypeComponent,
+    UpdateCarComponent,
     UpdateGearshiftTypeComponent,
     ActivatedComponent,
-    BlockedComponent
+    BlockedComponent,
+    UpdateAdComponent,
+    AddAdComponent,
+    AdsComponent
   ],
   imports: [
     BrowserModule,

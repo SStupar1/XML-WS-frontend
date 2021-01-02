@@ -1,0 +1,34 @@
+<nz-table #basicTable [nzData]="ads">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Limited kilometers</th>
+        <th>CDW</th>
+        <th>Seats</th>
+        <th>Creation date</th>
+        <th>Actions</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr  *ngFor="let ad of ads">
+          <td>{{ ad.name }}</td>
+          <td>{{ ad.limitedKm }}</td>
+          <td>{{ ad.cdw }}</td>
+          <td>{{ ad.seats }}</td>
+          <td>{{ ad.creationDate }}</td>
+          <td>
+            <a (click)="update(ad.id)">Update</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a (click)="delete(ad.id)">Delete</a>
+          </td>
+          <td>
+            <a (click)="updateAd(ad.id)">Update your ad</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a (click)="updateCar(ad.carId)">Update car details</a>
+          </td>
+      </tr>
+    
+    </tbody>
+  </nz-table>

@@ -26,6 +26,11 @@ import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshi
 import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
 import {BlockedComponent} from './pages/xml/lists/blocked/blocked.component';
 import {ActivatedComponent} from './pages/xml/lists/activated/activated.component';
+import { AdsComponent } from './pages/xml/lists/ads/ads.component';
+import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
+import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
+import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.component';
+
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -42,6 +47,7 @@ const routes: Routes = [
       {path: 'lists/car-classes', component:CarClassesComponent}, 
       {path: 'lists/car-models', component:CarModelsComponent}, 
       {path: 'lists/car-brands', component:CarBrandsComponent}, 
+      {path: 'lists/ads', component:AdsComponent}, 
       {path: 'lists/gearshift-types', component:GearshiftTypesComponent},
       {path: 'lists/blocked', component:BlockedComponent},
       {path: 'lists/activated', component:ActivatedComponent},
@@ -50,11 +56,14 @@ const routes: Routes = [
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 
       {path: 'new-items/add-car-model', component:AddCarModelComponent}, 
       {path: 'new-items/add-car-brand', component:AddCarBrandComponent},
+      {path: 'new-items/add-ad', component:AddAdComponent},
       {path: 'updates/update-car-brand/:id', component:UpdateCarBrandComponent},
       {path: 'updates/update-car-class/:id', component:UpdateCarClassComponent},
       {path: 'updates/update-fuel-type/:id', component:UpdateFuelTypeComponent},
       {path: 'updates/update-gearshift-type/:id', component:UpdateGearshiftTypeComponent},
       {path: 'updates/update-car-model/:id', component:UpdateCarModelComponent},
+      {path: 'updates/update-ad/:id', component:UpdateAdComponent},
+      {path: 'updates/update-car/:id', component:UpdateCarComponent},
 
       {path: 'auth/register-agent', component:RegisterAgentComponent},
       
