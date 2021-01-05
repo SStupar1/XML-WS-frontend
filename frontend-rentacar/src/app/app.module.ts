@@ -8,6 +8,7 @@ import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@ang
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
 //Components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/xml/dashboard/dashboard.component';
@@ -54,6 +55,7 @@ import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fu
 import { AddGearshiftTypeComponent } from './pages/xml/new-items/add-gearshift-type/add-gearshift-type.component';
 import { ActivatedComponent } from './pages/xml/lists/activated/activated.component';
 import { BlockedComponent } from './pages/xml/lists/blocked/blocked.component';
+import { AdvertisementsComponent } from './pages/xml/lists/advertisements/advertisements.component';
 
 
 registerLocaleData(en);
@@ -96,7 +98,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     BlockedComponent,
     UpdateAdComponent,
     AddAdComponent,
-    AdsComponent
+    AdsComponent,
+    AdvertisementsComponent
   ],
   imports: [
     BrowserModule,
@@ -108,9 +111,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     BrowserAnimationsModule,
     ScrollingModule,
     DragDropModule,
-
+    FlexLayoutModule,
     MatSliderModule,
-    
     DemoNgZorroAntdModule
   ],
   //for services

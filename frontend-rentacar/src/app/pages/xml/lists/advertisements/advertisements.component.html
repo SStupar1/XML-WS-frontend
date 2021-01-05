@@ -1,0 +1,34 @@
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ad of ads">
+            <nz-card [nzCover]="coverTemplate" [nzActions]="[actionRent, actionDelete]">
+                <nz-card-meta nzTitle="{{ad.name}}" nzDescription="This is the description"></nz-card-meta>
+                <br>
+                <nz-card nzType="inner" nzTitle="About Car" [nzExtra]="extraTemplate">
+                    <a>{{ad.name}}</a>
+                    <a>{{ad.car.fuelType.type}}</a>
+                    <a>{{ad.car.gearshiftType.type}}</a>
+                    <a>{{ad.car.carModel.carClass.name}}</a>
+                    <a>{{ad.car.carModel.name}}</a>
+                    
+                </nz-card>
+            </nz-card>
+
+            <ng-template #coverTemplate>
+                <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+            </ng-template>
+
+            <ng-template #actionRent>
+                <i nz-icon nzType="car"></i>
+            </ng-template>
+
+            <ng-template #actionDelete>
+                <i nz-icon nzType="delete"></i>
+            </ng-template>
+
+            <ng-template #extraTemplate>
+                <a>More</a>
+            </ng-template>
+        </div>
+    </div>  
+</div>

@@ -11,6 +11,7 @@
   <nz-layout>
     <nz-sider nzWidth="200px" nzTheme="light">
       <ul nz-menu nzMode="inline" class="sider-menu">
+        <!--ADMIN FUNCTIONs-->
         <li nz-menu-item *ngIf="isAdmin" routerLink="/dashboard/lists/registration-requests">Registration requests</li>
         <li nz-menu-item *ngIf="isAdmin" routerLink="/dashboard/lists/activated">Activated users</li>
         <li nz-menu-item *ngIf="isAdmin" routerLink="/dashboard/lists/blocked">Blocked users</li>
@@ -24,7 +25,9 @@
             <li nz-menu-item routerLink="/dashboard/lists/gearshift-types">Gearshift types </li>
           </ul>
         </li>
-        <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/ads">Advertisements</li>
+        <!--SIMPLE-USER FUNCTIONs-->
+        <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/ads">Ads</li>
+        <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/advertisements">Advertisements</li>
         <li nz-submenu nzTitle="subnav 3" nzIcon="notification">
           <ul>
             <li nz-menu-item>option9</li>
@@ -45,3 +48,4 @@
     </nz-layout>
   </nz-layout>
 </nz-layout>
+

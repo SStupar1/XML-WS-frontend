@@ -30,6 +30,7 @@ import { AdsComponent } from './pages/xml/lists/ads/ads.component';
 import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
 import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
 import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.component';
+import { AdvertisementsComponent } from './pages/xml/lists/advertisements/advertisements.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
       {path: 'lists/car-models', component:CarModelsComponent}, 
       {path: 'lists/car-brands', component:CarBrandsComponent}, 
       {path: 'lists/ads', component:AdsComponent}, 
+      {path: 'lists/advertisements', component:AdvertisementsComponent}, 
       {path: 'lists/gearshift-types', component:GearshiftTypesComponent},
       {path: 'lists/blocked', component:BlockedComponent},
       {path: 'lists/activated', component:ActivatedComponent},
