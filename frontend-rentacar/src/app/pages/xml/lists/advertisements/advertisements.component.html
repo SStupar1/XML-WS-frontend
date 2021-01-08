@@ -2,16 +2,45 @@
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ad of ads">
             <nz-card [nzCover]="coverTemplate" [nzActions]="[actionRent, actionDelete]">
-                <nz-card-meta nzTitle="{{ad.name}}" nzDescription="This is the description"></nz-card-meta>
+                <!-- ADVERTISEMENT INFORMATION-->
+                <nz-card-meta nzTitle="{{ad.name}}" nzDescription="Advertisement created: {{ad.creationDate}} "></nz-card-meta>
+                <ng-container *ngIf="ad.limitedKm === 0">
+                    <p>UNLIMITED distance to travel!</p>
+                </ng-container>
+                <ng-container *ngIf="ad.limitedKm !== 0">
+                    <p>This car is limited to {{ad.limitedKm}} kilometers per rent.</p>
+                </ng-container>
+                <p>Number of seats for children is {{ad.seats}}.</p>                
+                <!--CAR INFORMATION-->
                 <br>
-                <nz-card nzType="inner" nzTitle="About Car" [nzExtra]="extraTemplate">
-                    <a>{{ad.name}}</a>
-                    <a>{{ad.car.fuelType.type}}</a>
-                    <a>{{ad.car.gearshiftType.type}}</a>
-                    <a>{{ad.car.carModel.carClass.name}}</a>
-                    <a>{{ad.car.carModel.name}}</a>
+                <nz-card nzType="inner" nzTitle="About Car">
+                    <p>Car brand: {{ad.car.carModel.carBrand.name}}</p>
+                    <p>Car model: {{ad.car.carModel.name}}</p>
+                    <p>Car class: {{ad.car.carModel.carClass.name}}</p>
+                    <p>Fuel type: {{ad.car.fuelType.type}}</p>
+                    <p>Gearshift type: {{ad.car.gearshiftType.type}}</p>
+                    <p>Kilometer traveled: {{ad.car.kmTraveled}}</p>
+                </nz-card>
+                
+                <nz-card nzType="inner" nzTitle="About Publisher" [nzExtra]="extraTemplate" *ngIf="ad.simpleUser">
+                    <ng-container *ngIf="show">
+                        <p>First name: {{publisher.firstName}}</p>
+                        <p>Last name: {{publisher.lastName}}</p>
+                        <p>Email: {{publisher.username}}</p>
+                        <p>Address: {{publisher.address}}</p>
+                    </ng-container>
                     
                 </nz-card>
+                <nz-card nzType="inner" nzTitle="About Publisher" [nzExtra]="extraTemplate" *ngIf="!ad.simpleUser">
+                    <ng-container *ngIf="show">
+                        <p>Company name: {{publisher.name}}</p>
+                        <p>Date founded: {{publisher.dateFounded}}</p>
+                        <p>Bank account number: {{publisher.bankAccountNumber}}</p>
+                        <p>Address: {{publisher.address}}</p>
+                    </ng-container> 
+                </nz-card>
+                <br>
+                <label nz-checkbox [(ngModel)]="checked">Would you like CDW(Collision Damage Waiver) protection?</label>
             </nz-card>
 
             <ng-template #coverTemplate>
@@ -27,7 +56,7 @@
             </ng-template>
 
             <ng-template #extraTemplate>
-                <a>More</a>
+                <a (click)="toggle(ad.simpleUser, ad.publisherId)">More</a>
             </ng-template>
         </div>
     </div>  
