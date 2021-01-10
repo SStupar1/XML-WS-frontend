@@ -18,21 +18,17 @@
                 <p>Gearshift type: {{ad.car.gearshiftType.type}}</p>
                 <p>Kilometer traveled: {{ad.car.kmTraveled}}</p>
             </nz-card> 
-            <nz-card nzType="inner" nzTitle="About Publisher" [nzExtra]="extraTemplate" *ngIf="ad.simpleUser">
-                <ng-container *ngIf="show">
-                    <p>First name: {{publisher.firstName}}</p>
-                    <p>Last name: {{publisher.lastName}}</p>
-                    <p>Email: {{publisher.username}}</p>
-                    <p>Address: {{publisher.address}}</p>
-                </ng-container>   
+            <nz-card nzType="inner" nzTitle="About Publisher" *ngIf="ad.simpleUser">
+                    <p>First name: {{ad.publisher.firstName}}</p>
+                    <p>Last name: {{ad.publisher.lastName}}</p>
+                    <p>Email: {{ad.publisher.username}}</p>
+                    <p>Address: {{ad.publisher.address}}</p>
             </nz-card>
-            <nz-card nzType="inner" nzTitle="About Publisher" [nzExtra]="extraTemplate" *ngIf="!ad.simpleUser">
-                <ng-container *ngIf="show">
-                    <p>Company name: {{publisher.name}}</p>
-                    <p>Date founded: {{publisher.dateFounded}}</p>
-                    <p>Bank account number: {{publisher.bankAccountNumber}}</p>
-                    <p>Address: {{publisher.address}}</p>
-                </ng-container> 
+            <nz-card nzType="inner" nzTitle="About Publisher" *ngIf="!ad.simpleUser">
+                    <p>Company name: {{ad.publisher.name}}</p>
+                    <p>Date founded: {{ad.publisher.dateFounded}}</p>
+                    <p>Bank account number: {{ad.publisher.bankAccountNumber}}</p>
+                    <p>Address: {{ad.publisher.address}}</p>
             </nz-card>
             <br>
     </nz-card>
@@ -47,7 +43,7 @@
         </ng-container> 
         <ng-container *ngIf="!rentAction">
             <i nz-icon nzType="edit"></i>
-            <i nz-icon nzType="remove"></i>
+            <i nz-icon nzType="delete"></i>
         </ng-container> 
     </ng-template>
 </div>

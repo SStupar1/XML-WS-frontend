@@ -30,6 +30,8 @@ import { AdsComponent } from './pages/xml/lists/ads/ads.component';
 import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
 import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
 import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.component';
+import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
+import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -50,7 +52,11 @@ const routes: Routes = [
       {path: 'lists/gearshift-types', component:GearshiftTypesComponent},
       {path: 'lists/blocked', component:BlockedComponent},
       {path: 'lists/activated', component:ActivatedComponent},
-      {path: 'lists/rent-ads', component:ActivatedComponent},
+      {path: 'lists/rent-ads', component:ActivatedComponent},//obrisacu ovo
+      {path: 'lists/rent-ad-list', component:RentAdListComponent},
+      {path: 'lists/publisher-ad-list', component:PublisherAdListComponent},
+
+
       {path: 'new-items/add-gearshift-type', component:AddGearshiftTypeComponent}, 
       {path: 'new-items/add-fuel-type', component:AddFuelTypeComponent}, 
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 

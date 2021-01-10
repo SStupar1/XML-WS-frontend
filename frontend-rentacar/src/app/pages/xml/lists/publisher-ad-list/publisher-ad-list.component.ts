@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdService } from 'src/app/services/ad.service';
 
 @Component({
   selector: 'app-publisher-ad-list',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublisherAdListComponent implements OnInit {
 
-  constructor() { }
+  private user: any;
+  public ads = [];
+
+  constructor(private adService: AdService) { }
 
   ngOnInit(): void {
+    this.setupUser();
+    this.getAllPublisherAds();
   }
+
+  getAllPublisherAds(): void {
+    this.adService.getAllPublisherAds(this.user.id).subscribe(data => {
+      this.ads = data;
+    }, error => {
+      alert("Error");
+    })
+  }
+
+  private setupUser(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+  } 
 
 }
