@@ -1,7 +1,10 @@
 <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ad of ads">
-            <nz-card [nzCover]="coverTemplate" [nzActions]="[actionRent, actionDelete]">
+            <nz-card [nzCover]="coverTemplate" [nzActions]="[actionRent]">
+                <!--CDW, MORE about publisher - izmeniti da se ne menja na svim karticama-->
+                <!--dodati akcije na rent-->
+                <!--dodati slike-->
                 <!-- ADVERTISEMENT INFORMATION-->
                 <nz-card-meta nzTitle="{{ad.name}}" nzDescription="Advertisement created: {{ad.creationDate}} "></nz-card-meta>
                 <ng-container *ngIf="ad.limitedKm === 0">
@@ -40,6 +43,7 @@
                     </ng-container> 
                 </nz-card>
                 <br>
+                
                 <label nz-checkbox [(ngModel)]="checked">Would you like CDW(Collision Damage Waiver) protection?</label>
             </nz-card>
 
@@ -51,9 +55,7 @@
                 <i nz-icon nzType="car"></i>
             </ng-template>
 
-            <ng-template #actionDelete>
-                <i nz-icon nzType="delete"></i>
-            </ng-template>
+          
 
             <ng-template #extraTemplate>
                 <a (click)="toggle(ad.simpleUser, ad.publisherId)">More</a>

@@ -27,8 +27,9 @@
         </li>
         <!--SIMPLE-USER FUNCTIONs-->
         <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/ads">Ads</li>
-        <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/advertisements">Advertisements</li>
+        <li nz-menu-item *ngIf="isSimpleUser" routerLink="/dashboard/lists/rent-ads">Rent</li>
         <li nz-menu-item *ngIf="!isAdmin" routerLink="/dashboard/new-items/add-ad">Add ad</li>
+
         <li nz-submenu nzTitle="subnav 3" nzIcon="notification">
           <ul>
             <li nz-menu-item>option9</li>

@@ -4,11 +4,11 @@ import { AgentService } from 'src/app/services/agent.service';
 import { SimpleUserService } from 'src/app/services/simple-user.service';
 
 @Component({
-  selector: 'app-advertisements',
-  templateUrl: './advertisements.component.html',
-  styleUrls: ['./advertisements.component.css']
+  selector: 'app-rent-ads',
+  templateUrl: './rent-ads.component.html',
+  styleUrls: ['./rent-ads.component.css']
 })
-export class AdvertisementsComponent implements OnInit {
+export class RentAdsComponent implements OnInit {
 
   public ads = [];
   private user: any;
@@ -71,6 +71,5 @@ export class AdvertisementsComponent implements OnInit {
     }
   }
 */
-
 
 }

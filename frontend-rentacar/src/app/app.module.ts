@@ -29,7 +29,9 @@ import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshi
 import { AdsComponent } from './pages/xml/lists/ads/ads.component';
 import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
 import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
-
+import { RentAdsComponent } from './pages/xml/lists/rent-ads/rent-ads.component';
+import { AdCardComponent } from './pages/xml/ad-card/ad-card.component';
+import { AdCardListComponent } from './pages/xml/lists/ad-card-list/ad-card-list.component';
 
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -55,7 +57,6 @@ import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fu
 import { AddGearshiftTypeComponent } from './pages/xml/new-items/add-gearshift-type/add-gearshift-type.component';
 import { ActivatedComponent } from './pages/xml/lists/activated/activated.component';
 import { BlockedComponent } from './pages/xml/lists/blocked/blocked.component';
-import { AdvertisementsComponent } from './pages/xml/lists/advertisements/advertisements.component';
 
 
 registerLocaleData(en);
@@ -99,7 +100,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     UpdateAdComponent,
     AddAdComponent,
     AdsComponent,
-    AdvertisementsComponent
+    RentAdsComponent,
+    AdCardComponent,
+    AdCardListComponent
   ],
   imports: [
     BrowserModule,

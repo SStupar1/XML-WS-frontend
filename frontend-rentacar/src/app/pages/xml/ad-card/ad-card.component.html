@@ -1,0 +1,53 @@
+<div class="content">
+    <nz-card [nzCover]="coverTemplate" [nzActions]="[action]">
+        <nz-card-meta nzTitle="{{ad.name}}" nzDescription="Advertisement created: {{ad.creationDate}} "></nz-card-meta>
+            <ng-container *ngIf="ad.limitedKm === 0">
+                <p>Distance to travel: UNLIMITED</p>
+            </ng-container>
+            <ng-container *ngIf="ad.limitedKm !== 0">
+                <p>Distance to travel: {{ad.limitedKm}} km</p>
+            </ng-container>
+            <p>Number of seats for children: {{ad.seats}}.</p>                
+            <!--CAR INFORMATION-->
+            <br>
+            <nz-card nzType="inner" nzTitle="About Car">
+                <p>Car brand: {{ad.car.carModel.carBrand.name}}</p>
+                <p>Car model: {{ad.car.carModel.name}}</p>
+                <p>Car class: {{ad.car.carModel.carClass.name}}</p>
+                <p>Fuel type: {{ad.car.fuelType.type}}</p>
+                <p>Gearshift type: {{ad.car.gearshiftType.type}}</p>
+                <p>Kilometer traveled: {{ad.car.kmTraveled}}</p>
+            </nz-card> 
+            <nz-card nzType="inner" nzTitle="About Publisher" [nzExtra]="extraTemplate" *ngIf="ad.simpleUser">
+                <ng-container *ngIf="show">
+                    <p>First name: {{publisher.firstName}}</p>
+                    <p>Last name: {{publisher.lastName}}</p>
+                    <p>Email: {{publisher.username}}</p>
+                    <p>Address: {{publisher.address}}</p>
+                </ng-container>   
+            </nz-card>
+            <nz-card nzType="inner" nzTitle="About Publisher" [nzExtra]="extraTemplate" *ngIf="!ad.simpleUser">
+                <ng-container *ngIf="show">
+                    <p>Company name: {{publisher.name}}</p>
+                    <p>Date founded: {{publisher.dateFounded}}</p>
+                    <p>Bank account number: {{publisher.bankAccountNumber}}</p>
+                    <p>Address: {{publisher.address}}</p>
+                </ng-container> 
+            </nz-card>
+            <br>
+    </nz-card>
+
+    <ng-template #coverTemplate>
+        <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+    </ng-template>
+
+    <ng-template #action>
+        <ng-container *ngIf="rentAction">
+            <i nz-icon nzType="car"></i>
+        </ng-container> 
+        <ng-container *ngIf="!rentAction">
+            <i nz-icon nzType="edit"></i>
+            <i nz-icon nzType="remove"></i>
+        </ng-container> 
+    </ng-template>
+</div>
