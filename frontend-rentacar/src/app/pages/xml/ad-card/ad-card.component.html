@@ -1,16 +1,18 @@
 <div class="content">
     <nz-card [nzCover]="coverTemplate" [nzActions]="[action]">
         <nz-card-meta nzTitle="{{ad.name}}" nzDescription="Advertisement created: {{ad.creationDate}} "></nz-card-meta>
-            <ng-container *ngIf="ad.limitedKm === 0">
-                <p>Distance to travel: UNLIMITED</p>
-            </ng-container>
-            <ng-container *ngIf="ad.limitedKm !== 0">
-                <p>Distance to travel: {{ad.limitedKm}} km</p>
-            </ng-container>
-            <p>Number of seats for children: {{ad.seats}}.</p>                
-            <!--CAR INFORMATION-->
             <br>
-            <nz-card nzType="inner" nzTitle="About Car">
+            <nz-card nzType="inner" nzTitle="Advertisement informations">
+                <ng-container *ngIf="ad.limitedKm === 0">
+                    <p>Distance to travel: UNLIMITED</p>
+                </ng-container>
+                <ng-container *ngIf="ad.limitedKm !== 0">
+                    <p>Distance to travel: {{ad.limitedKm}} km</p>
+                </ng-container>
+                <p>Number of seats for children: {{ad.seats}}.</p>       
+            </nz-card>          
+            <!--CAR INFORMATION-->
+            <nz-card nzType="inner" nzTitle="Car informations">
                 <p>Car brand: {{ad.car.carModel.carBrand.name}}</p>
                 <p>Car model: {{ad.car.carModel.name}}</p>
                 <p>Car class: {{ad.car.carModel.carClass.name}}</p>
@@ -18,7 +20,7 @@
                 <p>Gearshift type: {{ad.car.gearshiftType.type}}</p>
                 <p>Kilometer traveled: {{ad.car.kmTraveled}}</p>
             </nz-card> 
-            <nz-card nzType="inner" nzTitle="About Publisher" *ngIf="ad.simpleUser">
+            <nz-card nzType="inner" nzTitle="Publisher informations" *ngIf="ad.simpleUser">
                     <p>First name: {{ad.publisher.firstName}}</p>
                     <p>Last name: {{ad.publisher.lastName}}</p>
                     <p>Email: {{ad.publisher.username}}</p>
