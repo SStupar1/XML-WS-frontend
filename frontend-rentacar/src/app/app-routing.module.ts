@@ -32,6 +32,7 @@ import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
 import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.component';
 import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
 import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
+import { PictureComponent } from './pages/xml/picture/picture.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path: 'login/:id', component: LoginComponent },
   {path: 'register-simple-user', component: RegisterSimpleUserComponent},
   {path: 'dashboard', component:DashboardComponent, children: [
+      {path: 'xml/picture', component:PictureComponent},
       {path: 'updates/admin/:id', component:AdminComponent}, 
       {path: 'updates/simple-user/:id', component:SimpleUserComponent},
       {path: 'updates/agent/:id', component:AgentComponent},

@@ -33,6 +33,7 @@ import { RentAdsComponent } from './pages/xml/lists/rent-ads/rent-ads.component'
 import { AdCardComponent } from './pages/xml/ad-card/ad-card.component';
 import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
 import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
+import { PictureComponent } from './pages/xml/picture/picture.component';
 
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -104,7 +105,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     RentAdsComponent,
     AdCardComponent,
     RentAdListComponent,
-    PublisherAdListComponent
+    PublisherAdListComponent,
+    PictureComponent
   ],
   imports: [
     BrowserModule,
