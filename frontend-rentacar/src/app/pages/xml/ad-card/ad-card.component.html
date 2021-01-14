@@ -26,7 +26,7 @@
                     <p>Email: {{ad.publisher.username}}</p>
                     <p>Address: {{ad.publisher.address}}</p>
             </nz-card>
-            <nz-card nzType="inner" nzTitle="About Publisher" *ngIf="!ad.simpleUser">
+            <nz-card nzType="inner" nzTitle="Publisher informations" *ngIf="!ad.simpleUser">
                     <p>Company name: {{ad.publisher.name}}</p>
                     <p>Date founded: {{ad.publisher.dateFounded}}</p>
                     <p>Bank account number: {{ad.publisher.bankAccountNumber}}</p>
@@ -36,7 +36,12 @@
     </nz-card>
 
     <ng-template #coverTemplate>
-        <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+        <ng-container *ngIf="pictureExists">
+            <img [src]="retrievedImage" />
+        </ng-container> 
+        <ng-container *ngIf="!pictureExists">
+            <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+         </ng-container> 
     </ng-template>
 
     <ng-template #action>
@@ -44,8 +49,8 @@
             <i nz-icon nzType="car"></i>
         </ng-container> 
         <ng-container *ngIf="!rentAction">
-            <i nz-icon nzType="edit"></i>
-            <i nz-icon nzType="delete"></i>
+            <i nz-icon nzType="edit" (click)=updateAd(ad.id)></i>
+            <i nz-icon nzType="delete" (click)=deleteAd(ad.id)></i>
         </ng-container> 
     </ng-template>
 </div>

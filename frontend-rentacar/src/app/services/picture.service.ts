@@ -16,8 +16,8 @@ export class PictureService {
     return this.http.post(`${this.baseUrl}/ad-service/ads/upload`, uploadImageData, { observe: 'response' });
   }
 
-  public getImage(imageName): Observable<any> {
-    return this.http.get(`${this.baseUrl}/ad-service/ads/get/${imageName}`);
+  public getImage(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}/ad-service/ads/get/${id}`);
   }
   
 }

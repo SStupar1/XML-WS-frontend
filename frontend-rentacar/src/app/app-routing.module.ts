@@ -26,13 +26,11 @@ import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshi
 import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
 import {BlockedComponent} from './pages/xml/lists/blocked/blocked.component';
 import {ActivatedComponent} from './pages/xml/lists/activated/activated.component';
-import { AdsComponent } from './pages/xml/lists/ads/ads.component';
 import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
 import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
 import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.component';
 import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
 import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
-import { PictureComponent } from './pages/xml/picture/picture.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -41,7 +39,6 @@ const routes: Routes = [
   {path: 'login/:id', component: LoginComponent },
   {path: 'register-simple-user', component: RegisterSimpleUserComponent},
   {path: 'dashboard', component:DashboardComponent, children: [
-      {path: 'xml/picture', component:PictureComponent},
       {path: 'updates/admin/:id', component:AdminComponent}, 
       {path: 'updates/simple-user/:id', component:SimpleUserComponent},
       {path: 'updates/agent/:id', component:AgentComponent},
@@ -50,11 +47,9 @@ const routes: Routes = [
       {path: 'lists/car-classes', component:CarClassesComponent}, 
       {path: 'lists/car-models', component:CarModelsComponent}, 
       {path: 'lists/car-brands', component:CarBrandsComponent}, 
-      {path: 'lists/ads', component:AdsComponent}, 
       {path: 'lists/gearshift-types', component:GearshiftTypesComponent},
       {path: 'lists/blocked', component:BlockedComponent},
       {path: 'lists/activated', component:ActivatedComponent},
-      {path: 'lists/rent-ads', component:ActivatedComponent},//obrisacu ovo
       {path: 'lists/rent-ad-list', component:RentAdListComponent},
       {path: 'lists/publisher-ad-list', component:PublisherAdListComponent},
 

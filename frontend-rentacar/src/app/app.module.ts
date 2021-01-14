@@ -26,14 +26,11 @@ import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.co
 import { UpdateCarModelComponent } from './pages/xml/updates/update-car-model/update-car-model.component';
 import { UpdateFuelTypeComponent } from './pages/xml/updates/update-fuel-type/update-fuel-type.component';
 import { UpdateGearshiftTypeComponent } from './pages/xml/updates/update-gearshift-type/update-gearshift-type.component';
-import { AdsComponent } from './pages/xml/lists/ads/ads.component';
 import { UpdateAdComponent } from './pages/xml/updates/update-ad/update-ad.component';
 import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
-import { RentAdsComponent } from './pages/xml/lists/rent-ads/rent-ads.component';
 import { AdCardComponent } from './pages/xml/ad-card/ad-card.component';
 import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
 import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
-import { PictureComponent } from './pages/xml/picture/picture.component';
 
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -101,13 +98,10 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     BlockedComponent,
     UpdateAdComponent,
     AddAdComponent,
-    AdsComponent,
-    RentAdsComponent,
     AdCardComponent,
     RentAdListComponent,
-    PublisherAdListComponent,
-    PictureComponent
-  ],
+    PublisherAdListComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,

@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class AdService {
 
   private baseUrl = environment.baseUrl;
-
+d
   constructor(private http: HttpClient) { }
 
   public getAllAds(): Observable<any> {
     return this.http.get(`${this.baseUrl}/ad-service/ads`);
   }
 
-  public getAllPublisherAds(id): Observable<any> {
-    return this.http.get(`${this.baseUrl}/ad-service/ads/publisher-ads/${id}`);
+  public getAllPublisherAds(id, publisher): Observable<any> {
+    return this.http.get(`${this.baseUrl}/ad-service/ads/publisher-ads/${id}/${publisher}`);
   }
 
 

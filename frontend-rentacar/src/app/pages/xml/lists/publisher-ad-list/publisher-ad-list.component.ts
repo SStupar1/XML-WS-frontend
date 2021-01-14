@@ -10,6 +10,7 @@ export class PublisherAdListComponent implements OnInit {
 
   private user: any;
   public ads = [];
+  private simpleUser : boolean = false;
 
   constructor(private adService: AdService) { }
 
@@ -19,7 +20,11 @@ export class PublisherAdListComponent implements OnInit {
   }
 
   getAllPublisherAds(): void {
-    this.adService.getAllPublisherAds(this.user.id).subscribe(data => {
+    if(this.user.userRole === 'SIMPLE_USER'){
+      this.simpleUser = true;
+    }
+    
+    this.adService.getAllPublisherAds(this.user.id, this.simpleUser).subscribe(data => {
       this.ads = data;
     }, error => {
       alert("Error");

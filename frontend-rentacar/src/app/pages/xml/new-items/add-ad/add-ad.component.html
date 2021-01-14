@@ -1,43 +1,42 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    
-    <!--CAR-MODEL-->
-    <nz-form-item>
-      <a nz-dropdown [nzDropdownMenu]="menu"  >
-        Choose car model
-        <i nz-icon nzType="down"></i>
-      </a>
-      <nz-dropdown-menu #menu="nzDropdownMenu">
-        <ul nz-menu *ngFor="let carModel of carModels" >
-          <li nz-menu-item value={{carModel.id}} (click)="changeSelectCarModel($event)">{{ carModel.name }} {{carModel.carBrand.name}} {{carModel.carClass.name}}</li>
-        </ul>
-        <a routerLink="/dashboard/new-items/add-car-model"></a>
-      </nz-dropdown-menu>
-    </nz-form-item>
-    <!--FUEL-TYPE-->
-    <nz-form-item>
-        <a nz-dropdown [nzDropdownMenu]="menuFt"  >
-          Choose fuel type
-          <i nz-icon nzType="down"></i>
-        </a>
-        <nz-dropdown-menu #menuFt="nzDropdownMenu">
-          <ul nz-menu *ngFor="let fuelType of fuelTypes" >
-            <li nz-menu-item value={{fuelType.id}} (click)="changeSelectFuelType($event)">{{ fuelType.type }} {{fuelType.tankCapacity}}</li>
-          </ul>
-        </nz-dropdown-menu>
-      </nz-form-item>
-    <!--GEARSHIFT-TYPE-->
-    <nz-form-item>
-        <a nz-dropdown [nzDropdownMenu]="menuGt"  >
-          Choose gearshift type
-          <i nz-icon nzType="down"></i>
-        </a>
-        <nz-dropdown-menu #menuGt="nzDropdownMenu">
-          <ul nz-menu *ngFor="let gearshiftType of gearshiftTypes" >
-            <li nz-menu-item value={{gearshiftType.id}} (click)="changeSelectGearshiftType($event)">{{ gearshiftType.type }} {{gearshiftType.numberOfGears}}</li>
-          </ul>
-        </nz-dropdown-menu>
-      </nz-form-item>
+<!--CAR-MODEL-->
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose car model" [(ngModel)]="selectedCarModel">
+  <ng-container *ngFor="let carModel of carModels">
+    <nz-option nzLabel="{{carModel.name}} {{carModel.carBrand.name}} {{carModel.carClass.name}}" nzValue="{{carModel.id}}"></nz-option>
+  </ng-container>
+</nz-select>
+<br><br>
 
+<!--FUEL-TYPE-->
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose fuel type" [(ngModel)]="selectedFuelType">
+  <ng-container *ngFor="let fuelType of fuelTypes">
+    <nz-option nzLabel="{{ fuelType.type }} {{fuelType.tankCapacity}}" nzValue="{{fuelType.id}}"></nz-option>
+  </ng-container>
+</nz-select>
+<br><br>
+
+<!--GEARSHIFT-TYPE-->
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose gearshift type" [(ngModel)]="selectedGearshiftType">
+  <ng-container *ngFor="let gearshiftType of gearshiftTypes">
+    <nz-option nzLabel="{{ gearshiftType.type }} {{gearshiftType.numberOfGears}}" nzValue="{{gearshiftType.id}}"></nz-option>
+  </ng-container>
+</nz-select>
+<br><br>
+<!--PICTURES-->
+<div class="clearfix">
+  <nz-upload
+    class="upload-list-inline"
+    nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+    nzListType="picture"
+    [(nzFileList)]="fileList2"
+  >
+    <button nz-button>
+      <span><i nz-icon nzType="upload"></i> Upload</span>
+    </button>
+  </nz-upload>
+</div>
+<br><br>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <!--KM-TRAVELED-->
     <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="kmTraveled" nzRequired>Kilometers traveled by now: </nz-form-label>
@@ -46,7 +45,7 @@
         </nz-form-control>
       </nz-form-item>
 
-      <!--LIMITED-KM-->
+    <!--LIMITED-KM-->
     <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="limitedKm" nzRequired>Limit distance to travel per rent:  </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input limit!">
@@ -54,20 +53,23 @@
         </nz-form-control>
       </nz-form-item>
 
-       <!--SEATS-->
+    <!--SEATS-->
     <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="seats" nzRequired>Number of seats for childrens:  </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input number of seats for children!">
           <input nz-input id="seats" type="number" formControlName="seats" placeholder="seats" />
         </nz-form-control>
-      </nz-form-item>
+    </nz-form-item>
 
-    <!--CREATE-NEW-CAR-MODEL-->
+    <!--CREATE-NEW-AD-->
     <nz-form-item nz-row class="create-area">
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
         <button nz-button nzType="primary">Create</button>
       </nz-form-control>
     </nz-form-item>
+  </form>
+
+
+  
 
     
-  </form>

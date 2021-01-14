@@ -5,7 +5,16 @@ import { FuelTypeService } from 'src/app/services/fuel-type.service';
 import { GearshiftTypeService } from 'src/app/services/gearshift-type.service';
 import {formatDate} from '@angular/common';
 import { AdService } from 'src/app/services/ad.service';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
+function getBase64(file: File): Promise<string | ArrayBuffer | null> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
 
 
 @Component({
@@ -17,20 +26,18 @@ export class AddAdComponent implements OnInit {
 
   private user: any;
   public carModels = [];
-  public carModelId : any;
+  public selectedCarModel: any = null;
   public fuelTypes = [];
-  public fuelTypeId : any;
+  public selectedFuelType: any = null;
   public gearshiftTypes = [];
-  public gearshiftTypeId : any;
+  public selectedGearshiftType: any = null;
   private limitedDistance : boolean = true; 
   validateForm!: FormGroup;
   //CDW stavljam na false kada se kreira oglas(njega bira korisnik i u zavisnosti od toga se menja cena)
   private cdw : boolean = false;
   private simpleUser: boolean =false;
-
-
-
-
+  defaultFileList: NzUploadFile[] = [];
+  fileList2 = [...this.defaultFileList];
 
   constructor(private adService: AdService,private fb: FormBuilder, private cmService: CarModelService, private ftService: FuelTypeService, private gtService: GearshiftTypeService) { }
 
@@ -72,18 +79,6 @@ export class AddAdComponent implements OnInit {
     })
   }
 
-  changeSelectFuelType(e){
-    this.fuelTypeId = e.target.value;
-  }
-
-  changeSelectCarModel(e){
-    this.carModelId = e.target.value;
-  }
-
-  changeSelectGearshiftType(e){
-    this.gearshiftTypeId = e.target.value;
-  }
-
   submitForm(): void {
     //VALIDATE
     for (const i in this.validateForm.controls) {
@@ -101,26 +96,31 @@ export class AddAdComponent implements OnInit {
       this.simpleUser = false;
     }
     
-    const body = {
-      publisherId: this.user.id,
-      carModelId: this.carModelId,
-      fuelTypeId: this.fuelTypeId,
-      gearshiftTypeId: this.gearshiftTypeId,
-      kmTraveled: this.validateForm.value.kmTraveled,
-      limitedDistance: this.limitedDistance,
-      limitedKm: this.validateForm.value.limitedKm,
-      cdw: this.cdw,
-      seats: this.validateForm.value.seats,
-      creationDate: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-      simpleUser: this.simpleUser
-    }
-    console.log(body);
-
-    this.adService.createAd(body).subscribe(data => {
+    var formData = new FormData();
+    this.fileList2.forEach(element => {
+      formData.append('imageFile', element.originFileObj, element.originFileObj.name);
+    });
+    formData.append('request', new Blob([JSON.stringify({
+      'publisherId': this.user.id,
+      'carModelId': this.selectedCarModel,
+      'fuelTypeId': this.selectedFuelType,
+      'gearshiftTypeId': this.selectedGearshiftType,
+      'kmTraveled': this.validateForm.value.kmTraveled,
+      'limitedDistance': this.limitedDistance,
+      'limitedKm': this.validateForm.value.limitedKm,
+      'cdw': this.cdw,
+      'seats': this.validateForm.value.seats,
+      'creationDate': formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+      'simpleUser': this.simpleUser
+    })], {
+        type: "application/json"
+    }));
+    this.adService.createAd(formData).subscribe(data => {
       alert("Created! ");
     }, error => {
       alert("Error");
     })
 
   }
+
 }

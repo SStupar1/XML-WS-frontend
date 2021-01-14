@@ -31,7 +31,6 @@ export class UpdateAdComponent implements OnInit {
 
   submitForm(): void {
     this.adService.updateAd(this.id, this.validateForm.value).subscribe(data => {
-      this.router.navigateByUrl(`dashboard/lists/ads`);
     }, error => {
       alert('Error');
     })
