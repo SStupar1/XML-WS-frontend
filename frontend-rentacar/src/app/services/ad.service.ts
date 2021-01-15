@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AdService {
 
   private baseUrl = environment.baseUrl;
-d
+
   constructor(private http: HttpClient) { }
 
   public getAllAds(): Observable<any> {

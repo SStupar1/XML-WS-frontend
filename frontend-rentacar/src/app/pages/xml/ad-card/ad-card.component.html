@@ -45,12 +45,12 @@
     </ng-template>
 
     <ng-template #action>
-        <ng-container *ngIf="rentAction">
-            <i nz-icon nzType="car"></i>
+        <ng-container *ngIf="actionType === 'rent'">
+            <i nz-icon nzType="car" (click)=moreDetails(ad.id)></i>
         </ng-container> 
-        <ng-container *ngIf="!rentAction">
+        <ng-container *ngIf="actionType === 'modify'">
             <i nz-icon nzType="edit" (click)=updateAd(ad.id)></i>
-            <i nz-icon nzType="delete" (click)=deleteAd(ad.id)></i>
+            <i nz-icon nzType="delete"  (click)=deleteAd(ad.id) ></i>
         </ng-container> 
     </ng-template>
 </div>

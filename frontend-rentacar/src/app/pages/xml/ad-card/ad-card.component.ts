@@ -13,9 +13,9 @@ import { SimpleUserService } from 'src/app/services/simple-user.service';
 export class AdCardComponent implements OnInit {
 
   @Input() ad: any;
-  @Input() rentAction: boolean; //u zavisnosti od ovog parametra renderujemo akcije u card komponenti
+  @Input() actionType: boolean; //u zavisnosti od ovog parametra renderujemo akcije u card komponenti
   private user: any;
-  private pictureExists: boolean = true;
+  public pictureExists: boolean = true;
   retrievedImage: any;
   base64Data: any;
   retrieveResonse: any;
@@ -26,7 +26,6 @@ export class AdCardComponent implements OnInit {
   ngOnInit(): void {
     this.checkPictureExists(this.ad);
     this.setupUser();
-    console.log(this.ad);
   }
 
   private setupUser(): void {
@@ -40,9 +39,11 @@ export class AdCardComponent implements OnInit {
     }else{
       this.extractPicture(ad);
     }
+    console.log(this.pictureExists);
   }
 
   private extractPicture(ad){
+    console.log(ad);
     this.pService.getImage(this.ad.pictures[0].id).subscribe(response => {
       this.retrieveResonse = response;
       this.base64Data = this.retrieveResonse.picByte;
@@ -58,7 +59,11 @@ export class AdCardComponent implements OnInit {
 
   public deleteAd(id){
     this.adService.deleteAd(id).subscribe(data =>{
-      this.router.navigateByUrl(`dashboard/lists/publisher-ad-list`);
+      location.reload();
     })
+  }
+
+  public moreDetails(id){
+    this.router.navigateByUrl(`dashboard/ad-details/${id}`);
   }
 }

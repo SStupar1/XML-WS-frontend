@@ -56,6 +56,9 @@ import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fu
 import { AddGearshiftTypeComponent } from './pages/xml/new-items/add-gearshift-type/add-gearshift-type.component';
 import { ActivatedComponent } from './pages/xml/lists/activated/activated.component';
 import { BlockedComponent } from './pages/xml/lists/blocked/blocked.component';
+import { AdDetailsComponent } from './pages/xml/ad-details/ad-details.component';
+
+import { OnCreateDirective } from 'src/app/on-create.directive';
 
 
 registerLocaleData(en);
@@ -100,7 +103,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     AddAdComponent,
     AdCardComponent,
     RentAdListComponent,
-    PublisherAdListComponent
+    PublisherAdListComponent,
+    AdDetailsComponent,
+    OnCreateDirective
     ],
   imports: [
     BrowserModule,

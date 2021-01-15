@@ -15,4 +15,14 @@
       </form>
     </div>
   </nav>
-
+  
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ad of ads">
+          <app-ad-card
+            [ad]="ad"
+            [actionType]="''">
+          </app-ad-card>
+        </div>
+    </div>
+  </div>
