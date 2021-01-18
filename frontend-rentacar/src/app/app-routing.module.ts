@@ -32,6 +32,7 @@ import { UpdateCarComponent } from './pages/xml/updates/update-car/update-car.co
 import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
 import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
 import { AdDetailsComponent } from './pages/xml/ad-details/ad-details.component';
+import { CartComponent } from './pages/xml/cart/cart.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'register-simple-user', component: RegisterSimpleUserComponent},
   {path: 'dashboard', component:DashboardComponent, children: [
       {path: 'ad-details/:id', component: AdDetailsComponent},
+      {path: 'cart', component: CartComponent},
       {path: 'updates/admin/:id', component:AdminComponent}, 
       {path: 'updates/simple-user/:id', component:SimpleUserComponent},
       {path: 'updates/agent/:id', component:AgentComponent},
@@ -54,8 +56,6 @@ const routes: Routes = [
       {path: 'lists/activated', component:ActivatedComponent},
       {path: 'lists/rent-ad-list', component:RentAdListComponent},
       {path: 'lists/publisher-ad-list', component:PublisherAdListComponent},
-
-
       {path: 'new-items/add-gearshift-type', component:AddGearshiftTypeComponent}, 
       {path: 'new-items/add-fuel-type', component:AddFuelTypeComponent}, 
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 

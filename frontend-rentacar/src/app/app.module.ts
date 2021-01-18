@@ -31,6 +31,7 @@ import { AddAdComponent } from './pages/xml/new-items/add-ad/add-ad.component';
 import { AdCardComponent } from './pages/xml/ad-card/ad-card.component';
 import { RentAdListComponent } from './pages/xml/lists/rent-ad-list/rent-ad-list.component';
 import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/publisher-ad-list.component';
+import { CartComponent } from './pages/xml/cart/cart.component';
 
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -105,7 +106,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     RentAdListComponent,
     PublisherAdListComponent,
     AdDetailsComponent,
-    OnCreateDirective
+    OnCreateDirective,
+    CartComponent
     ],
   imports: [
     BrowserModule,

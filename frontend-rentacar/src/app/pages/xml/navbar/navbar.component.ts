@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router:Router, private adService: AdService, private cmService: CarModelService, private cbService: CarBrandService,
     private ccService: CarClassService, private ftService: FuelTypeService, private gtService: GearshiftTypeService,
-    private searchService: SearchService, private fb: FormBuilder,) { }
+    private searchService: SearchService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getAllAds();
@@ -163,6 +163,7 @@ export class NavbarComponent implements OnInit {
       fromDateString: this.fromDateString,
       toDateString: this.toDateString
     }
+    
     console.log(data);
     this.searchService.search(data).subscribe(data => {
       this.ads = data.ads;

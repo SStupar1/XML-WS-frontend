@@ -1,4 +1,4 @@
-<nz-card>
+<nz-card [nzActions]="[action]">
     <nz-card-meta nzTitle="{{ad.name}}" nzDescription="Advertisement created: {{ad.creationDate}} "></nz-card-meta>
         <br>
         <nz-card nzType="inner" nzTitle="Advertisement informations">
@@ -38,4 +38,31 @@
                 <img [src]="retrievedImage" />
             </div>
         </div>
+
+        
+    <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+        <!--DATE PICKER-->
+        <nz-form-item>
+          <nz-form-control>
+            <nz-range-picker
+              [nzShowTime]="{ nzFormat: 'HH:mm' }"
+              nzFormat="yyyy-MM-dd HH:mm"
+              formControlName="dates"
+              (nzOnOk)="onOk($event)"
+              style="width: 300px;"
+            ></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <!--CDW-->
+        <nz-form-item *ngIf="ad.cdw">
+          <nz-form-control>
+            <label nz-checkbox formControlName="cdw">Collision Damage Waiver</label>
+          </nz-form-control>
+        </nz-form-item>
+    </form>
+
 </nz-card>
+
+<ng-template #action>
+    <i nz-icon nzType="car" (click)=addToCart()></i>
+</ng-template>

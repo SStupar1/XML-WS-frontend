@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(private route: ActivatedRoute,  private rrService: RegistrationRequestService, private router: Router, private authService: AuthService) { }
  
   model: any = {}
+  private cart = [];
 
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
       const user = data;
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', JSON.stringify(user.token));
-
+      localStorage.setItem('cart', JSON.stringify(this.cart));
       this.router.navigateByUrl(`dashboard`);
     }, error => {
       alert("Error login");
