@@ -17,12 +17,117 @@
   </nav>
   
   <div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ad of ads">
-          <app-ad-card
-            [ad]="ad"
-            [actionType]="''">
-          </app-ad-card>
+    <!--CAR MODEL-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose car model" [(ngModel)]="selectedCarModel">
+        <ng-container *ngFor="let carModel of carModels">
+          <nz-option nzLabel="{{carModel.name}}" nzValue="{{carModel.id}}"></nz-option>
+        </ng-container>
+      </nz-select>
+    <!--CAR BRAND-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose car brand" [(ngModel)]="selectedCarBrand">
+        <ng-container *ngFor="let carBrand of carBrands">
+          <nz-option nzLabel="{{carBrand.name}}" nzValue="{{carBrand.id}}"></nz-option>
+        </ng-container>
+      </nz-select>
+    <!--CAR CLASS-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose car class" [(ngModel)]="selectedCarClass">
+        <ng-container *ngFor="let carClass of carClasses">
+          <nz-option nzLabel="{{carClass.name}}" nzValue="{{carClass.id}}"></nz-option>
+        </ng-container>
+      </nz-select>
+    <!--FUEL-TYPE-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose fuel type" [(ngModel)]="selectedFuelType">
+        <ng-container *ngFor="let fuelType of fuelTypes">
+          <nz-option nzLabel="{{ fuelType.type }} {{fuelType.tankCapacity}}" nzValue="{{fuelType.id}}"></nz-option>
+        </ng-container>
+      </nz-select>
+    <!--GEARSHIFT-TYPE-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose gearshift type" [(ngModel)]="selectedGearshiftType">
+        <ng-container *ngFor="let gearshiftType of gearshiftTypes">
+          <nz-option nzLabel="{{ gearshiftType.type }} {{gearshiftType.numberOfGears}}" nzValue="{{gearshiftType.id}}"></nz-option>
+        </ng-container>
+      </nz-select>
+    <br>
+
+    <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+        <nz-form-item class="ajtemi">
+          <nz-form-label>Address </nz-form-label>
+          <nz-form-control>
+            <!--ADDRESS style="width: 300px;"-->
+            <input nz-input formControlName="address" placeholder="Input address"/>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="ajtemi">
+          <nz-form-control>
+            <!--DATE PICKER-->
+            <nz-range-picker
+              [nzShowTime]="{ nzFormat: 'HH:mm' }"
+              nzFormat="yyyy-MM-dd HH:mm"
+              formControlName="dates"
+              (nzOnOk)="onOk($event)"
+              style="width: 300px;"
+            ></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>Min price </nz-form-label>
+          <nz-form-control>
+            <!--MIN PRICE-->
+            <nz-input-number formControlName="minPrice" [nzMin]="0" [nzMax]="3000000" [nzStep]="1"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>Max price </nz-form-label>
+          <nz-form-control>
+            <!--MAX PRICE-->
+            <nz-input-number formControlName="maxPrice" [nzMin]="0" [nzMax]="3000000" [nzStep]="1"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>Kilometers traveled by now </nz-form-label>
+          <nz-form-control>
+            <!--KM TRAVELED-->
+            <nz-input-number formControlName="kmTraveled" [nzMin]="0" [nzMax]="500000" [nzStep]="1"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>Limit kilometers to travel </nz-form-label>
+          <nz-form-control>
+            <!--LIMITED KM-->
+            <nz-input-number formControlName="limitedKm" [nzMin]="0" [nzMax]="500000" [nzStep]="1"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>Seats </nz-form-label>
+          <nz-form-control>
+            <!--SEATS-->
+            <nz-input-number formControlName="seats" [nzMin]="0" [nzMax]="5" [nzStep]="1"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <!--AVAILABLE CDW-->
+            <label nz-checkbox formControlName="availableCDW">Collision Damage Waiver</label>
+          </nz-form-control>
+        </nz-form-item>
+      
+      <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+          <button nz-button nzType="primary" (click)="search()"><i nz-icon nzType="search"></i>Search</button>
+          <button nz-button (click)="resetForm()">Clear</button>
         </div>
-    </div>
+      </div>
+    </form>
+
+    
   </div>
+  <br><br>
+  <!--RESULT-->
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ad of ads">
+      <app-ad-card
+        [ad]="ad"
+        [actionType]="''">
+      </app-ad-card>
+    </div>
+</div>
