@@ -1,1 +1,22 @@
-<p>cart works!</p>
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/2) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let publisher of publishers">
+            <div class="content">
+                <nz-card>
+                    <nz-card-meta nzTitle="{{publisher.name}}"></nz-card-meta>
+                    <br>
+                    <ng-container *ngFor="let ad of publisher.ads">
+                        <nz-card nzType="inner" nzTitle="{{ad.name}}">
+                            <p>From date: {{ad.fromDateString}}  {{ad.fromTimeString}}</p>
+                            <p>To date: {{ad.toDateString}}  {{ad.toTimeString}}</p>     
+                            <label nzDisabled  nz-checkbox [(ngModel)]="ad.cdw">Collision Damage Waiver</label>  
+                        </nz-card>   
+                    </ng-container>
+                    <br>  
+                    <button nz-button nzType="primary" nzGhost (click)="rentBundle(publisher.id, publisher.simpleUser)">Rent as bundle</button>    
+                    <button class="dugmic" nz-button nzType="primary" nzGhost (click)="rentSeparately(publisher.id, publisher.simpleUser)">Rent separately</button>   
+                </nz-card>
+            </div>
+        </div>
+    </div>
+  </div>

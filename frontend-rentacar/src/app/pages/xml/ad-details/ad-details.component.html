@@ -1,4 +1,4 @@
-<nz-card [nzActions]="[action]">
+<nz-card>
     <nz-card-meta nzTitle="{{ad.name}}" nzDescription="Advertisement created: {{ad.creationDate}} "></nz-card-meta>
         <br>
         <nz-card nzType="inner" nzTitle="Advertisement informations">
@@ -59,10 +59,10 @@
             <label nz-checkbox formControlName="cdw">Collision Damage Waiver</label>
           </nz-form-control>
         </nz-form-item>
+        <nz-form-item nz-row style="margin-bottom:8px;">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button (click)="addToCart()" nz-button nzType="primary" [disabled]="!validateForm.valid">Add to cart</button>
+            </nz-form-control>
+        </nz-form-item>
     </form>
-
 </nz-card>
-
-<ng-template #action>
-    <i nz-icon nzType="car" (click)=addToCart()></i>
-</ng-template>

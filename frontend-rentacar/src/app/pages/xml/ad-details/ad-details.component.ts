@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdService } from 'src/app/services/ad.service';
 import { PictureService } from 'src/app/services/picture.service';
 import { FormBuilder, FormGroup ,Validators} from '@angular/forms';
+import { PublisherAdListComponent } from '../lists/publisher-ad-list/publisher-ad-list.component';
 
 @Component({
   selector: 'app-ad-details',
@@ -40,7 +41,7 @@ export class AdDetailsComponent implements OnInit {
 
   private setupCart(){
     this.cart = JSON.parse(localStorage.getItem('cart'));
-    console.log(this.cart);
+    //console.log(this.cart);
   }
 
   public getDetails(): void {
@@ -78,6 +79,34 @@ export class AdDetailsComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+
+    if(!this.publisherExist(this.ad)){
+      //napravi novi item
+      let item = {
+        id: this.ad.publisher.id,
+        name : this.ad.simpleUser == true ? (this.ad.publisher.firstName + " " + this.ad.publisher.lastName) : this.ad.publisher.name,
+        address: this.ad.publisher.address,
+        simpleUser: this.ad.simpleUser,
+        ads: [
+          {
+            id: this.ad.id,
+            cdw: this.ad.cdw,
+            name: this.ad.name,
+            fromDateString: this.fromDateString,
+            toDateString: this.toDateString,
+            fromTimeString: this.fromTimeString,
+            toTimeString: this.toTimeString
+          }
+        ]
+      }
+      this.cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      console.log("napravio sam novi");
+      console.log(this.cart);
+    }
+    this.router.navigateByUrl(`dashboard/lists/rent-ad-list`);
+
+    /*
     this.item = {
       dates : {
                 fromDateString : this.fromDateString,
@@ -89,18 +118,44 @@ export class AdDetailsComponent implements OnInit {
               id : this.ad.id,
               cdw: this.ad.cdw,
               name: this.ad.name,
-              simpleUser: this.ad.simpleUser,
               publisher: {
-                            name : this.ad.publisher.name,
-                            firstName: this.ad.publisher.firstName,
-                            lastName: this.ad.publisher.lastName,
-                            address: this.ad.publisher.address
+                            id : this.ad.publisher.id,
+                            name : this.ad.simpleUser == true ? (this.ad.publisher.firstName + " " + this.ad.publisher.lastName) : this.ad.publisher.name,
+                            address: this.ad.publisher.address,
+                            simpleUser: this.ad.simpleUser
                          }
            }
     }
-    
-    this.cart.push(this.item);
-    localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.router.navigateByUrl(`dashboard/lists/rent-ad-list`);
+    */
   }
+
+  private publisherExist(ad): boolean{
+    let retVal : boolean = false;
+    this.cart.forEach(publisher => {
+      if(publisher.simpleUser === ad.simpleUser){
+        if(publisher.id === ad.publisher.id){
+          //dodaj mu ad
+          let formatedAd = {
+            id: ad.id,
+            cdw: ad.cdw,
+            name: ad.name,
+            fromDateString: this.fromDateString,
+            toDateString: this.toDateString,
+            fromTimeString: this.fromTimeString,
+            toTimeString: this.toTimeString
+          }
+          publisher.ads.push(formatedAd);
+          retVal = true;
+          console.log("postojeci publisher: oglas++");
+          console.log(publisher);
+        }
+      }
+    });
+    
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    console.log(this.cart);
+    return retVal;
+  }
+
+  
 }

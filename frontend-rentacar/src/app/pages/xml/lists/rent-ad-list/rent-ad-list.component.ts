@@ -32,10 +32,12 @@ export class RentAdListComponent implements OnInit {
       if(this.cart.length){
        for(let i = 0; i < this.cart.length; i++){
          for(let j = 0; j < this.ads.length; j++){
-           if(this.cart[i].ad.id === this.ads[j].id){
-             this.ads.splice(j,1);
-             console.log(this.ads);
-            }
+           for(let k = 0; k < this.cart[i].ads.length; k++){
+            if(this.cart[i].ads[k].id === this.ads[j].id){
+              this.ads.splice(j,1);
+             }
+           }
+           
           } 
         }
       }
