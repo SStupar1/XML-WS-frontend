@@ -20,4 +20,20 @@ export class RentService {
   public createBundle(body): Observable<any> {
     return this.http.post(`${this.baseUrl}/rent-service/bundles`, body);
   }
+
+  public getAllPublisherReservations(data) : Observable<any>{
+    let queryParams = {
+      params : new HttpParams().set('publisherId', data["publisherId"])
+                               .set("simpleUser", data["simpleUser"])
+    } 
+    return this.http.get(`${this.baseUrl}/rent-service/reservations/publisher`, queryParams);
+  }
+
+  public approveReservation(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/rent-service/reservations/approve`, body);
+  }
+
+  public denyReservation(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/rent-service/reservations/deny`, body);
+  }
 }
