@@ -6,6 +6,14 @@
 </nz-select>
 <br><br>
 
+
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose pricelist" [(ngModel)]="selectedPricelist">
+  <ng-container *ngFor="let pricelist of pricelists">
+    <nz-option nzLabel="{{pricelist.priceCdw}} " nzValue="{{pricelist.id}}"></nz-option>
+  </ng-container>
+</nz-select>
+<br><br>
+
 <!--FUEL-TYPE-->
 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose fuel type" [(ngModel)]="selectedFuelType">
   <ng-container *ngFor="let fuelType of fuelTypes">
@@ -21,6 +29,7 @@
   </ng-container>
 </nz-select>
 <br><br>
+
 <!--PICTURES-->
 <div class="clearfix">
   <nz-upload
@@ -35,6 +44,16 @@
   </nz-upload>
 </div>
 <br><br>
+
+
+<!--
+<div *ngIf="pricelist">
+  <p>Price per day: {{pricelist.pricePerDay}}</p>
+  <p>Price per km: {{pricelist.pricePerKilometer}}</p>
+  <p>Price for cdw: {{pricelist.priceCdw}}</p>
+</div>
+<br><br>
+-->
 
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <!--KM-TRAVELED-->

@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="comments">
+    <thead>
+      <tr>
+        <th>Comment id</th>
+        <th>Content</th>
+        <th>Ad name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{ comment.id }}</td>
+        <td>{{ comment.content }}</td>
+        <td>{{ comment.ad.name }}</td>
+        <td>{{ comment.status }}</td>
+        <td>
+          <a (click)="approve(comment.id)">Approve</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="deny(comment.id)">Deny</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

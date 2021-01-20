@@ -1,0 +1,31 @@
+<nz-select nzAllowClear nzPlaceHolder="Choose discount" [(ngModel)]="selectedDiscount">
+  <ng-container *ngFor="let discount of discounts">
+    <nz-option nzLabel="{{ discount.discount }} %" nzValue="{{discount.id}}"></nz-option>
+  </ng-container>
+</nz-select>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pricePerDay" nzRequired>Price per day</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input price!">
+        <nz-input-number formControlName="pricePerDay" [nzMin]="0" [nzMax]="3000000" [nzStep]="1"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="type" nzRequired>Price per km</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input price!">
+          <nz-input-number formControlName="pricePerKilometer" [nzMin]="0" [nzMax]="3000000" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="priceCdw" nzRequired>Price for cdw</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input price!">
+          <nz-input-number formControlName="priceCdw" [nzMin]="0" [nzMax]="3000000" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+    <!--CREATE-NEW-CAR-BRAND-->
+    <nz-form-item nz-row class="create-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Create</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

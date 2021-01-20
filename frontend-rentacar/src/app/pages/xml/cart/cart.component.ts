@@ -91,6 +91,7 @@ export class CartComponent implements OnInit {
     }, error => {
       alert("Error");
     })
+    location.reload();
   }
 
 

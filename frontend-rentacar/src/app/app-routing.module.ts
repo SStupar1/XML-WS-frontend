@@ -35,6 +35,11 @@ import { AdDetailsComponent } from './pages/xml/ad-details/ad-details.component'
 import { CartComponent } from './pages/xml/cart/cart.component';
 import { PublisherReservationsComponent } from './pages/xml/lists/publisher-reservations/publisher-reservations.component';
 import { PublisherBundlesComponent } from './pages/xml/lists/publisher-bundles/publisher-bundles.component';
+import { CreatePricelistComponent } from './pages/xml/new-items/create-pricelist/create-pricelist.component';
+import { AddCommentComponent } from './pages/xml/new-items/add-comment/add-comment.component';
+import { ReservationsHistoryComponent } from './pages/xml/lists/reservations-history/reservations-history.component';
+import { CommentRequestsComponent } from './pages/xml/lists/comment-requests/comment-requests.component';
+
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'navbar'},
@@ -60,12 +65,16 @@ const routes: Routes = [
       {path: 'lists/publisher-ad-list', component:PublisherAdListComponent},
       {path: 'lists/publisher-reservations', component:PublisherReservationsComponent},
       {path: 'lists/publisher-bundles', component:PublisherBundlesComponent},
+      {path: 'lists/reservations-history', component:ReservationsHistoryComponent},
+      {path: 'lists/comment-requests', component:CommentRequestsComponent},
       {path: 'new-items/add-gearshift-type', component:AddGearshiftTypeComponent}, 
       {path: 'new-items/add-fuel-type', component:AddFuelTypeComponent}, 
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 
       {path: 'new-items/add-car-model', component:AddCarModelComponent}, 
       {path: 'new-items/add-car-brand', component:AddCarBrandComponent},
       {path: 'new-items/add-ad', component:AddAdComponent},
+      {path: 'new-items/add-pricelist', component:CreatePricelistComponent},
+      {path: 'new-items/add-comment/:id', component:AddCommentComponent},
       {path: 'updates/update-car-brand/:id', component:UpdateCarBrandComponent},
       {path: 'updates/update-car-class/:id', component:UpdateCarClassComponent},
       {path: 'updates/update-fuel-type/:id', component:UpdateFuelTypeComponent},

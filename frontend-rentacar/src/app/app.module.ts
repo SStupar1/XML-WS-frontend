@@ -34,6 +34,10 @@ import { PublisherAdListComponent } from './pages/xml/lists/publisher-ad-list/pu
 import { CartComponent } from './pages/xml/cart/cart.component';
 import { PublisherReservationsComponent } from './pages/xml/lists/publisher-reservations/publisher-reservations.component';
 import { PublisherBundlesComponent } from './pages/xml/lists/publisher-bundles/publisher-bundles.component';
+import { CreatePricelistComponent } from './pages/xml/new-items/create-pricelist/create-pricelist.component'
+import { AddCommentComponent } from './pages/xml/new-items/add-comment/add-comment.component';
+import { ReservationsHistoryComponent } from './pages/xml/lists/reservations-history/reservations-history.component';
+import { CommentRequestsComponent } from './pages/xml/lists/comment-requests/comment-requests.component';
 
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -111,7 +115,11 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     OnCreateDirective,
     CartComponent,
     PublisherReservationsComponent,
-    PublisherBundlesComponent
+    PublisherBundlesComponent,
+    CreatePricelistComponent,
+    AddCommentComponent,
+    ReservationsHistoryComponent,
+    CommentRequestsComponent
     ],
   imports: [
     BrowserModule,

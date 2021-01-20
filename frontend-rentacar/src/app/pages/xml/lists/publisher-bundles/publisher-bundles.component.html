@@ -1,1 +1,21 @@
-<p>publisher-bundles works!</p>
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/2) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let bundle of bundles">
+            <div class="content">
+                <nz-card>
+                    <nz-card-meta nzTitle="Bundle id: {{bundle.id}}"></nz-card-meta>
+                    <br>
+                    <ng-container *ngFor="let reservation of bundle.reservations">
+                        <nz-card nzType="inner" nzTitle="Ad id: {{reservation.ad.id}} Ad name: {{reservation.ad.name}}">
+                            <p>From date: {{reservation.fromDate}}  {{reservation.fromTime}}</p>
+                            <p>To date: {{reservation.toDate}}  {{reservation.toTime}}</p>     
+                        </nz-card>   
+                    </ng-container>
+                    <br>  
+                    <button nz-button nzType="primary" nzGhost (click)="approve(bundle.id)">Approve</button>    
+                    <button class="dugmic" nz-button nzType="primary" nzGhost (click)="deny(bundle.id)">Deny</button>   
+                </nz-card>
+            </div>
+        </div>
+    </div>
+  </div>

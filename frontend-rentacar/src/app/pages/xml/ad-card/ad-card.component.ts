@@ -39,11 +39,9 @@ export class AdCardComponent implements OnInit {
     }else{
       this.extractPicture(ad);
     }
-    console.log(this.pictureExists);
   }
 
   private extractPicture(ad){
-    console.log(ad);
     this.pService.getImage(this.ad.pictures[0].id).subscribe(response => {
       this.retrieveResonse = response;
       this.base64Data = this.retrieveResonse.picByte;

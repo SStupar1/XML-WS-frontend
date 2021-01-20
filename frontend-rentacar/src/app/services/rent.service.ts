@@ -29,6 +29,14 @@ export class RentService {
     return this.http.get(`${this.baseUrl}/rent-service/reservations/publisher`, queryParams);
   }
 
+  public getAllCustomerReservations(data) : Observable<any>{
+    let queryParams = {
+      params : new HttpParams().set('customerId', data["customerId"])
+                               .set("simpleUser", data["simpleUser"])
+    } 
+    return this.http.get(`${this.baseUrl}/rent-service/reservations/customer`, queryParams);
+  }
+
   public approveReservation(body): Observable<any> {
     return this.http.put(`${this.baseUrl}/rent-service/reservations/approve`, body);
   }
@@ -36,4 +44,24 @@ export class RentService {
   public denyReservation(body): Observable<any> {
     return this.http.put(`${this.baseUrl}/rent-service/reservations/deny`, body);
   }
+
+  public approveBundle(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/rent-service/bundles/approve`, body);
+  }
+
+  public denyBundle(body): Observable<any> {
+    return this.http.put(`${this.baseUrl}/rent-service/bundles/deny`, body);
+  }
+
+  public getAllPublisherBundles(data) : Observable<any>{
+    let queryParams = {
+      params : new HttpParams().set('publisherId', data["publisherId"])
+                               .set("simpleUser", data["simpleUser"])
+    } 
+    return this.http.get(`${this.baseUrl}/rent-service/bundles/publisher`, queryParams);
+  }
+
+  
+
+  
 }

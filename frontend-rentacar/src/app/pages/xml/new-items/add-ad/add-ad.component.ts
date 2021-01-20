@@ -6,6 +6,7 @@ import { GearshiftTypeService } from 'src/app/services/gearshift-type.service';
 import {formatDate} from '@angular/common';
 import { AdService } from 'src/app/services/ad.service';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { PricelistService } from 'src/app/services/pricelist.service';
 
 function getBase64(file: File): Promise<string | ArrayBuffer | null> {
   return new Promise((resolve, reject) => {
@@ -31,6 +32,8 @@ export class AddAdComponent implements OnInit {
   public selectedFuelType: any = null;
   public gearshiftTypes = [];
   public selectedGearshiftType: any = null;
+  public pricelists = [];
+  public selectedPricelist: any = null;
   private limitedDistance : boolean = true; 
   validateForm!: FormGroup;
   //CDW stavljam na false kada se kreira oglas(njega bira korisnik i u zavisnosti od toga se menja cena)
@@ -39,13 +42,14 @@ export class AddAdComponent implements OnInit {
   defaultFileList: NzUploadFile[] = [];
   fileList2 = [...this.defaultFileList];
 
-  constructor(private adService: AdService,private fb: FormBuilder, private cmService: CarModelService, private ftService: FuelTypeService, private gtService: GearshiftTypeService) { }
+  constructor(private adService: AdService,private fb: FormBuilder, private cmService: CarModelService,private pricelistService: PricelistService , private ftService: FuelTypeService, private gtService: GearshiftTypeService) { }
 
   ngOnInit(): void {
     this.setupUser();
     this.getCarModels();
     this.getFuelTypes();
     this.getGearshiftTypes();
+    this.getPricelists();
     this.validateForm = this.fb.group({
       kmTraveled: [null, [Validators.required]],
       limitedKm: [null, [Validators.required]],
@@ -56,6 +60,15 @@ export class AddAdComponent implements OnInit {
   private setupUser(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
   } 
+
+
+  private getPricelists(): void {
+    this.pricelistService.getAllPricelists().subscribe(data => {
+      this.pricelists = data;
+    }, error => {
+      alert("Error");
+    })
+  }
 
   private getCarModels(): void {
     this.cmService.getAllCarModels().subscribe(data => {
@@ -120,7 +133,6 @@ export class AddAdComponent implements OnInit {
     }, error => {
       alert("Error");
     })
-
   }
 
 }
