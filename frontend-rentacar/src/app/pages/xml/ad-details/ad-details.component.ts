@@ -4,6 +4,8 @@ import { AdService } from 'src/app/services/ad.service';
 import { PictureService } from 'src/app/services/picture.service';
 import { FormBuilder, FormGroup ,Validators} from '@angular/forms';
 import { PublisherAdListComponent } from '../lists/publisher-ad-list/publisher-ad-list.component';
+import { CommentService } from 'src/app/services/comment.service';
+import { RatingService } from 'src/app/services/rating.service';
 
 @Component({
   selector: 'app-ad-details',
@@ -18,6 +20,7 @@ export class AdDetailsComponent implements OnInit {
   base64Data: any;
   retrieveResonse: any;
   public cart = [];
+  public comments = [];
   //dates
   public fromDateString : string = "";
   public toDateString : string = "";
@@ -26,17 +29,37 @@ export class AdDetailsComponent implements OnInit {
   public dateFrom : Date;
   public dateTo: Date;
   dates: any;
-  private item: any;
+  public avgRating: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private adService: AdService, private pService: PictureService, private fb: FormBuilder) { }
+  constructor(private commentService: CommentService, private ratingService: RatingService ,private router: Router, private route: ActivatedRoute, private adService: AdService, private pService: PictureService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getDetails();
     this.setupCart();
+    this.getComments();
+    this.getAvgRating();
     this.validateForm = this.fb.group({
       cdw: [false],
       dates: [null, [Validators.required]]
     });
+  }
+
+  private getAvgRating(){
+    this.id = this.route.snapshot.params.id;
+    this.ratingService.getAverageRatingByAd(this.id).subscribe(response => {
+      this.avgRating = response.averageRating;
+    }, error => {
+      alert("There is no comments for this ad");
+    })
+  }
+
+  private getComments(){
+    this.id = this.route.snapshot.params.id;
+    this.commentService.getAllCommentsByAd(this.id).subscribe(response => {
+      this.comments = response;
+    }, error => {
+      alert("There is no comments for this ad");
+    })
   }
 
   private setupCart(){
@@ -101,32 +124,8 @@ export class AdDetailsComponent implements OnInit {
       }
       this.cart.push(item);
       localStorage.setItem('cart', JSON.stringify(this.cart));
-      console.log("napravio sam novi");
-      console.log(this.cart);
     }
     this.router.navigateByUrl(`dashboard/lists/rent-ad-list`);
-
-    /*
-    this.item = {
-      dates : {
-                fromDateString : this.fromDateString,
-                toDateString : this.toDateString,
-                fromTimeString : this.fromTimeString,
-                toTimeString : this.toTimeString
-              },
-      ad : {
-              id : this.ad.id,
-              cdw: this.ad.cdw,
-              name: this.ad.name,
-              publisher: {
-                            id : this.ad.publisher.id,
-                            name : this.ad.simpleUser == true ? (this.ad.publisher.firstName + " " + this.ad.publisher.lastName) : this.ad.publisher.name,
-                            address: this.ad.publisher.address,
-                            simpleUser: this.ad.simpleUser
-                         }
-           }
-    }
-    */
   }
 
   private publisherExist(ad): boolean{
@@ -146,14 +145,11 @@ export class AdDetailsComponent implements OnInit {
           }
           publisher.ads.push(formatedAd);
           retVal = true;
-          console.log("postojeci publisher: oglas++");
-          console.log(publisher);
         }
       }
     });
     
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    console.log(this.cart);
     return retVal;
   }
 

@@ -28,6 +28,9 @@ export class CommentService {
     return this.http.put(`${this.baseUrl}/ad-service/comments/approve`, body);
   }
 
+  public getAllCommentsByAd(id) : Observable<any>{
+    return this.http.get(`${this.baseUrl}/ad-service/comments/ad/${id}`);
+  }
   
   public denyComment(body): Observable<any> {
     return this.http.put(`${this.baseUrl}/ad-service/comments/deny`, body);

@@ -13,6 +13,7 @@
             <p>Price per km: {{ad.pricelist.pricePerKilometer}}</p>
             <p>Price of cdw: {{ad.pricelist.priceCDW}}</p>
             <p>Available discount: {{ad.pricelist.discount.discount}} %</p>     
+            <p>Avarage rating: {{avgRating}}</p>     
         </nz-card> 
 
         <!--CAR INFORMATION-->
@@ -35,6 +36,11 @@
                 <p>Date founded: {{ad.publisher.dateFounded}}</p>
                 <p>Bank account number: {{ad.publisher.bankAccountNumber}}</p>
                 <p>Address: {{ad.publisher.address}}</p>
+        </nz-card>
+        <nz-card nzType="inner" nzTitle="Comments" *ngIf="comments">
+          <ng-container *ngFor="let comment of comments">
+            <p> {{comment.content}}</p>
+          </ng-container>
         </nz-card>
         <br>
 

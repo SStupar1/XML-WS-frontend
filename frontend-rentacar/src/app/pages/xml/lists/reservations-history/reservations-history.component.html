@@ -5,19 +5,22 @@
         <th>Ad name</th>
         <th>From date</th>
         <th>To date</th>
-        <th>Actions</th>
+        <th>Comment</th>
+        <th *ngIf="simpleUser">Rate</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let reservation of reservations">
+      <tr *ngFor="let reservation of reservations; let i = index" [attr.data-index]="i">
         <td>{{ reservation.ad.id }}</td>
         <td>{{ reservation.ad.name }}</td>
         <td>{{ reservation.fromDate }} {{ reservation.fromTime }}</td>
         <td>{{ reservation.toDate }} {{ reservation.toTime }}</td>
         <td>
           <a (click)="addComment(reservation.ad.id)">Add comment</a>
-          <nz-divider nzType="vertical"></nz-divider>
-          <a (click)="rate(reservation.ad.id)">Rate</a>
+          <!--<a *ngIf="simpleUser" (click)="rate(reservation.ad.id)">Rate</a>-->
+        </td>
+        <td *ngIf="simpleUser">
+            <nz-rate [(ngModel)]="ratings[i].value" [nzTooltips]="tooltips" (click)="rate(reservation.ad.id)"></nz-rate>
         </td>
       </tr>
     </tbody>
