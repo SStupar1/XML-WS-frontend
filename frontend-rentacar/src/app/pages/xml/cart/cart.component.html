@@ -1,6 +1,6 @@
 <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div [fxFlex]="(100/2) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let publisher of publishers">
+        <div [fxFlex]="(100/2) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let publisher of publishers;let i = index" [attr.data-index]="i">
             <div class="content">
                 <nz-card>
                     <nz-card-meta nzTitle="{{publisher.name}}"></nz-card-meta>
@@ -9,12 +9,19 @@
                         <nz-card nzType="inner" nzTitle="{{ad.name}}">
                             <p>From date: {{ad.fromDateString}}  {{ad.fromTimeString}}</p>
                             <p>To date: {{ad.toDateString}}  {{ad.toTimeString}}</p>     
-                            <label nzDisabled  nz-checkbox [(ngModel)]="ad.cdw">Collision Damage Waiver</label>  
+                            <label nzDisabled  nz-checkbox [(ngModel)]="ad.cdw">Collision Damage Waiver</label>    
                         </nz-card>   
                     </ng-container>
                     <br>  
-                    <button nz-button nzType="primary" nzGhost (click)="rentBundle(publisher.id, publisher.simpleUser)">Rent as bundle</button>    
-                    <button class="dugmic" nz-button nzType="primary" nzGhost (click)="rentSeparately(publisher.id, publisher.simpleUser)">Rent separately</button>   
+                    <div id='header'>
+                        <button nzGhost nz-button nzType="primary" (click)="calculateStartingPrice(i)" >Calculate starting price</button>
+                        <div id="live_stats">{{startingPrices[i].price}} $</div>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <button nz-button nzType="primary"  (click)="rentBundle(publisher.id, publisher.simpleUser)">Rent as bundle</button>    
+                        <button nz-button nzType="primary"  (click)="rentSeparately(publisher.id, publisher.simpleUser)">Rent separately</button>  
+                    </div>
                 </nz-card>
             </div>
         </div>

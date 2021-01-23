@@ -35,10 +35,14 @@ import { AdDetailsComponent } from './pages/xml/ad-details/ad-details.component'
 import { CartComponent } from './pages/xml/cart/cart.component';
 import { PublisherReservationsComponent } from './pages/xml/lists/publisher-reservations/publisher-reservations.component';
 import { PublisherBundlesComponent } from './pages/xml/lists/publisher-bundles/publisher-bundles.component';
+import { ReportsComponent } from './pages/xml/lists/reports/reports.component';
 import { CreatePricelistComponent } from './pages/xml/new-items/create-pricelist/create-pricelist.component';
 import { AddCommentComponent } from './pages/xml/new-items/add-comment/add-comment.component';
 import { ReservationsHistoryComponent } from './pages/xml/lists/reservations-history/reservations-history.component';
 import { CommentRequestsComponent } from './pages/xml/lists/comment-requests/comment-requests.component';
+import { AddReservationComponent } from './pages/xml/new-items/add-reservation/add-reservation.component';
+import { AddReportComponent } from './pages/xml/new-items/add-report/add-report.component';
+
 
 
 const routes: Routes = [
@@ -67,6 +71,7 @@ const routes: Routes = [
       {path: 'lists/publisher-bundles', component:PublisherBundlesComponent},
       {path: 'lists/reservations-history', component:ReservationsHistoryComponent},
       {path: 'lists/comment-requests', component:CommentRequestsComponent},
+      {path: 'lists/reports', component:ReportsComponent},
       {path: 'new-items/add-gearshift-type', component:AddGearshiftTypeComponent}, 
       {path: 'new-items/add-fuel-type', component:AddFuelTypeComponent}, 
       {path: 'new-items/add-car-class', component:AddCarClassComponent}, 
@@ -74,7 +79,9 @@ const routes: Routes = [
       {path: 'new-items/add-car-brand', component:AddCarBrandComponent},
       {path: 'new-items/add-ad', component:AddAdComponent},
       {path: 'new-items/add-pricelist', component:CreatePricelistComponent},
+      {path: 'new-items/add-reservation', component:AddReservationComponent},
       {path: 'new-items/add-comment/:id', component:AddCommentComponent},
+      {path: 'new-items/add-report/:id', component:AddReportComponent}, 
       {path: 'updates/update-car-brand/:id', component:UpdateCarBrandComponent},
       {path: 'updates/update-car-class/:id', component:UpdateCarClassComponent},
       {path: 'updates/update-fuel-type/:id', component:UpdateFuelTypeComponent},

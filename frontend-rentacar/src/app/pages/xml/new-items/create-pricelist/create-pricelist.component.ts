@@ -50,6 +50,7 @@ export class CreatePricelistComponent implements OnInit {
       discountId: this.selectedDiscount
     }
     this.pricelistService.createPricelist(body).subscribe(data => {
+      this.router.navigateByUrl(`dashboard`);
     }, error => {
       alert('Error');
     })

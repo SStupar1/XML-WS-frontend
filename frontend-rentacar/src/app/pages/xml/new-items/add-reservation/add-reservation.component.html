@@ -1,0 +1,33 @@
+<nz-select  nzShowSearch nzAllowClear nzPlaceHolder="Choose ad" [(ngModel)]="selectedAd" style="width: 300px;">
+    <ng-container *ngFor="let ad of ads">
+      <nz-option nzLabel="{{ad.car.carModel.carBrand.name}} {{ad.car.carModel.name}} {{ad.car.carModel.carClass.name}}"
+                 nzValue="{{ad.id}}"></nz-option>
+    </ng-container>
+</nz-select>
+<br><br>
+<form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+    <nz-form-item>
+      <nz-form-control>
+        <!--DATE PICKER-->
+        <nz-range-picker
+          [nzShowTime]="{ nzFormat: 'HH:mm' }"
+          nzFormat="yyyy-MM-dd HH:mm"
+          formControlName="dates"
+          (nzOnOk)="onOk($event)"
+          style="width: 300px;"
+        ></nz-range-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Customer id </nz-form-label>
+      <nz-form-control>
+        <nz-input-number formControlName="customerId" [nzMin]="0" [nzMax]="3000000" [nzStep]="1"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+  
+  <div nz-row>
+    <div nz-col [nzSpan]="24" class="search-area">
+      <button nz-button nzType="primary" (click)="createReservation()">Create reservation</button>
+    </div>
+  </div>
+</form>

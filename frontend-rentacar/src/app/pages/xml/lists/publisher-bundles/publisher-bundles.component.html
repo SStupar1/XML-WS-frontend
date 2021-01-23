@@ -12,8 +12,10 @@
                         </nz-card>   
                     </ng-container>
                     <br>  
-                    <button nz-button nzType="primary" nzGhost (click)="approve(bundle.id)">Approve</button>    
-                    <button class="dugmic" nz-button nzType="primary" nzGhost (click)="deny(bundle.id)">Deny</button>   
+                    <div class="container">
+                        <button nz-button nzType="primary" nzGhost (click)="approve(bundle.id)">Approve</button>    
+                        <button nz-button nzType="primary" nzGhost (click)="deny(bundle.id)">Deny</button> 
+                    </div>   
                 </nz-card>
             </div>
         </div>

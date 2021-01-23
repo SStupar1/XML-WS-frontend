@@ -1,8 +1,9 @@
-<nz-select nzAllowClear nzPlaceHolder="Choose discount" [(ngModel)]="selectedDiscount">
+<nz-select nzAllowClear nzPlaceHolder="Choose discount" [(ngModel)]="selectedDiscount" style="margin-left: 16%; width: 190px;">
   <ng-container *ngFor="let discount of discounts">
     <nz-option nzLabel="{{ discount.discount }} %" nzValue="{{discount.id}}"></nz-option>
   </ng-container>
 </nz-select>
+<br><br>
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pricePerDay" nzRequired>Price per day</nz-form-label>

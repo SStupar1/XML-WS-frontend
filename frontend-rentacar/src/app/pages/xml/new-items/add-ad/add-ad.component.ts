@@ -124,7 +124,8 @@ export class AddAdComponent implements OnInit {
       'cdw': this.cdw,
       'seats': this.validateForm.value.seats,
       'creationDate': formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-      'simpleUser': this.simpleUser
+      'simpleUser': this.simpleUser,
+      'pricelistId': this.selectedPricelist
     })], {
         type: "application/json"
     }));

@@ -64,6 +64,8 @@
               [nzShowTime]="{ nzFormat: 'HH:mm' }"
               nzFormat="yyyy-MM-dd HH:mm"
               formControlName="dates"
+              [nzDisabledDate]="disabledDate"
+              [nzShowTime]="{ nzHideDisabledOptions: true, nzDefaultOpenValue: timeDefaultValue }"
               (nzOnOk)="onOk($event)"
               style="width: 300px;"
             ></nz-range-picker>

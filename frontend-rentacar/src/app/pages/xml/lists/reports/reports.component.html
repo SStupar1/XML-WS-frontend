@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="reservations">
+    <thead>
+      <tr>
+        <th>Ad id</th>
+        <th>Ad name</th>
+        <th>From date</th>
+        <th>To date</th>
+        <th>Customer id</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <td>{{ reservation.ad.id }}</td>
+        <td>{{ reservation.ad.name }}</td>
+        <td>{{ reservation.fromDate }} {{ reservation.fromTime }}</td>
+        <td>{{ reservation.toDate }} {{ reservation.toTime }}</td>
+        <td>{{ reservation.customerId }}</td>
+        <td>
+          <a (click)="generateReport(reservation.id)">Generate report</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

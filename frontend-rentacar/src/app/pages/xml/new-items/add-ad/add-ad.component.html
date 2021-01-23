@@ -9,7 +9,7 @@
 
 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose pricelist" [(ngModel)]="selectedPricelist">
   <ng-container *ngFor="let pricelist of pricelists">
-    <nz-option nzLabel="{{pricelist.priceCdw}} " nzValue="{{pricelist.id}}"></nz-option>
+    <nz-option nzLabel="{{pricelist.id}} " nzValue="{{pricelist.id}}"></nz-option>
   </ng-container>
 </nz-select>
 <br><br>

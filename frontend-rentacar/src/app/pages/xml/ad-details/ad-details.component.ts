@@ -102,7 +102,7 @@ export class AdDetailsComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-
+    console.log(this.ad);
     if(!this.publisherExist(this.ad)){
       //napravi novi item
       let item = {
@@ -113,12 +113,15 @@ export class AdDetailsComponent implements OnInit {
         ads: [
           {
             id: this.ad.id,
-            cdw: this.ad.cdw,
+            cdw: this.validateForm.value.cdw,
             name: this.ad.name,
             fromDateString: this.fromDateString,
             toDateString: this.toDateString,
             fromTimeString: this.fromTimeString,
-            toTimeString: this.toTimeString
+            toTimeString: this.toTimeString,
+            pricelist: this.ad.pricelist,
+            limitedKm: this.ad.limitedKm,
+            limitedDistance: this.ad.limitedDistance
           }
         ]
       }
@@ -141,7 +144,10 @@ export class AdDetailsComponent implements OnInit {
             fromDateString: this.fromDateString,
             toDateString: this.toDateString,
             fromTimeString: this.fromTimeString,
-            toTimeString: this.toTimeString
+            toTimeString: this.toTimeString,
+            pricelist: this.ad.pricelist,
+            limitedKm: this.ad.limitedKm,
+            limitedDistance: this.ad.limitedDistance
           }
           publisher.ads.push(formatedAd);
           retVal = true;

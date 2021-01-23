@@ -8,6 +8,9 @@ import { FuelTypeService } from 'src/app/services/fuel-type.service';
 import { GearshiftTypeService } from 'src/app/services/gearshift-type.service';
 import { SearchService } from 'src/app/services/search.service';
 import { FormBuilder, FormGroup ,Validators} from '@angular/forms';
+import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
+import setHours from "date-fns/setHours";
+import { DisabledTimeFn, DisabledTimePartial } from "ng-zorro-antd/date-picker";
 
 @Component({
   selector: 'navbar',
@@ -45,6 +48,8 @@ export class NavbarComponent implements OnInit {
   public dateFrom : Date;
   public dateTo: Date;
   dates: any;
+  today = new Date();
+  timeDefaultValue = setHours(new Date(), 0);
 
   constructor(private router:Router, private adService: AdService, private cmService: CarModelService, private cbService: CarBrandService,
     private ccService: CarClassService, private ftService: FuelTypeService, private gtService: GearshiftTypeService,
@@ -74,6 +79,14 @@ export class NavbarComponent implements OnInit {
       dates: [null, [Validators.required]]
     });
   }
+
+  disabledDate = (current: Date): boolean => {
+    //najmanje 48h od trenutka pretragevalidacija da moze da selektuje datum 
+    let tomorrow = new Date();
+    tomorrow.setDate(this.today.getDate() + 2);
+    return differenceInCalendarDays(current, tomorrow) < 0;
+  };
+
 
   onOk(result: Date[] ): void {
     this.dateFrom = new Date(result[0]);

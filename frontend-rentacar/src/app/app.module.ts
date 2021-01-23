@@ -36,8 +36,10 @@ import { PublisherReservationsComponent } from './pages/xml/lists/publisher-rese
 import { PublisherBundlesComponent } from './pages/xml/lists/publisher-bundles/publisher-bundles.component';
 import { CreatePricelistComponent } from './pages/xml/new-items/create-pricelist/create-pricelist.component'
 import { AddCommentComponent } from './pages/xml/new-items/add-comment/add-comment.component';
+import { ReportsComponent } from './pages/xml/lists/reports/reports.component';
 import { ReservationsHistoryComponent } from './pages/xml/lists/reservations-history/reservations-history.component';
 import { CommentRequestsComponent } from './pages/xml/lists/comment-requests/comment-requests.component';
+import { AddReservationComponent } from './pages/xml/new-items/add-reservation/add-reservation.component';
 
 //services
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -57,6 +59,7 @@ import { CarBrandsComponent } from './pages/xml/lists/car-brands/car-brands.comp
 import { CarModelsComponent } from './pages/xml/lists/car-models/car-models.component';
 import { CarClassesComponent } from './pages/xml/lists/car-classes/car-classes.component';
 import { AddCarBrandComponent } from './pages/xml/new-items/add-car-brand/add-car-brand.component';
+import { AddReportComponent } from './pages/xml/new-items/add-report/add-report.component';
 import { AddCarClassComponent } from './pages/xml/new-items/add-car-class/add-car-class.component';
 import { AddCarModelComponent } from './pages/xml/new-items/add-car-model/add-car-model.component';
 import { AddFuelTypeComponent } from './pages/xml/new-items/add-fuel-type/add-fuel-type.component';
@@ -119,7 +122,10 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     CreatePricelistComponent,
     AddCommentComponent,
     ReservationsHistoryComponent,
-    CommentRequestsComponent
+    CommentRequestsComponent,
+    AddReservationComponent,
+    ReportsComponent,
+    AddReportComponent
     ],
   imports: [
     BrowserModule,

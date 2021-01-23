@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+  }
+  
+  .container button:first-child {
+    width: 40%;
+    margin-right: 10%;
+  }
+  
+  .container button:last-child {
+    flex-grow: 1;
+    width: 40%;
+    margin-left:10%;
+  }
+
+
+  #header {
+    padding: 10px;
+    margin-left:30%;
+  }
+  
+  .btn {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+    border-width: 2px;
+    cursor: pointer;
+  }
+  
+  #live_stats {
+    display: inline-block;
+    margin-left: 5%;
+  }

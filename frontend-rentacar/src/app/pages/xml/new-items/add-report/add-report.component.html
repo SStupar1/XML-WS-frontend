@@ -1,0 +1,32 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label>Kilometers traveled </nz-form-label>
+        <nz-form-control>
+          <!--LIMITED KM-->
+          <nz-input-number formControlName="kmTraveled" [nzMin]="0" [nzMax]="500000" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="type" nzRequired>More informations</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input id="informations" formControlName="informations" placeholder="More informations" />
+        </nz-form-control>
+    </nz-form-item>
+    <!--CREATE-REPORT-->
+    <nz-form-item nz-row class="create-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Create</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+  
+  <div *ngIf="submited">
+      <h1>Report</h1>
+      <br><br>
+      <p>Reservation for car: {{ad.car.carModel.carBrand.name}} {{ad.car.carModel.name}} {{ad.car.carModel.carClass.name}}</p>
+      <p>Note: {{text}}</p>
+      <p>Your final price is: {{price}} $</p>
+      <p>Thank you for cooperation !</p>
+  </div>

@@ -21,12 +21,28 @@ export class RentService {
     return this.http.post(`${this.baseUrl}/rent-service/bundles`, body);
   }
 
+  public generateReport(data) : Observable<any>{
+    let queryParams = {
+      params : new HttpParams().set('reservationId', data["reservationId"])
+                               .set("kmTraveled", data["kmTraveled"])
+    } 
+    return this.http.get(`${this.baseUrl}/rent-service/reservations/generate-report`, queryParams);
+  }
+
   public getAllPublisherReservations(data) : Observable<any>{
     let queryParams = {
       params : new HttpParams().set('publisherId', data["publisherId"])
                                .set("simpleUser", data["simpleUser"])
     } 
     return this.http.get(`${this.baseUrl}/rent-service/reservations/publisher`, queryParams);
+  }
+
+  public getAllApprovedPublisherReservations(data) : Observable<any>{
+    let queryParams = {
+      params : new HttpParams().set('publisherId', data["publisherId"])
+                               .set("simpleUser", data["simpleUser"])
+    } 
+    return this.http.get(`${this.baseUrl}/rent-service/reservations/publisher/approved`, queryParams);
   }
 
   public getAllCustomerReservations(data) : Observable<any>{
